@@ -18,14 +18,14 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Visitor Information</summary>
-	[PublishedModel("visitorInformation")]
-	public partial class VisitorInformation : PublishedContentModel, IPageHeader, ISEO
+	/// <summary>Room Detail</summary>
+	[PublishedModel("roomDetail")]
+	public partial class RoomDetail : PublishedContentModel, ISEO
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
-		public new const string ModelTypeAlias = "visitorInformation";
+		public new const string ModelTypeAlias = "roomDetail";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
@@ -34,14 +34,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<VisitorInformation, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<RoomDetail, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public VisitorInformation(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+		public RoomDetail(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -50,36 +50,76 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Service
+		/// Link: Room check link
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("visitorServiceItem")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel VisitorServiceItem => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "visitorServiceItem");
+		[ImplementPropertyType("link")]
+		public virtual global::Umbraco.Cms.Core.Models.Link Link => this.Value<global::Umbraco.Cms.Core.Models.Link>(_publishedValueFallback, "link");
 
 		///<summary>
-		/// Page Alt Name
+		/// Description
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("pageAltName")]
-		public virtual string PageAltName => global::Umbraco.Cms.Web.Common.PublishedModels.PageHeader.GetPageAltName(this, _publishedValueFallback);
+		[ImplementPropertyType("roomDescription")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString RoomDescription => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "roomDescription");
 
 		///<summary>
-		/// Page Image: 1920 × 1200 px
+		/// Content
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("pageImage")]
-		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops PageImage => global::Umbraco.Cms.Web.Common.PublishedModels.PageHeader.GetPageImage(this, _publishedValueFallback);
+		[ImplementPropertyType("roomDetailContent")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString RoomDetailContent => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "roomDetailContent");
 
 		///<summary>
-		/// Page Name
+		/// Slider Item
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("pageName")]
-		public virtual string PageName => global::Umbraco.Cms.Web.Common.PublishedModels.PageHeader.GetPageName(this, _publishedValueFallback);
+		[ImplementPropertyType("roomDetailSliderItem")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel RoomDetailSliderItem => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "roomDetailSliderItem");
+
+		///<summary>
+		/// Subtitle
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("roomDetailSubtitle")]
+		public virtual string RoomDetailSubtitle => this.Value<string>(_publishedValueFallback, "roomDetailSubtitle");
+
+		///<summary>
+		/// Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("roomDetailTitle")]
+		public virtual string RoomDetailTitle => this.Value<string>(_publishedValueFallback, "roomDetailTitle");
+
+		///<summary>
+		/// Content
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("roomPropertyContent")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel RoomPropertyContent => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "roomPropertyContent");
+
+		///<summary>
+		/// Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("roomPropertyTitle")]
+		public virtual string RoomPropertyTitle => this.Value<string>(_publishedValueFallback, "roomPropertyTitle");
+
+		///<summary>
+		/// Short Description
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("roomShortDescription")]
+		public virtual string RoomShortDescription => this.Value<string>(_publishedValueFallback, "roomShortDescription");
 
 		///<summary>
 		/// Browser Header

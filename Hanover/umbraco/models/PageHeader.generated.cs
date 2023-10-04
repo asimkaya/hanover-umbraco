@@ -83,7 +83,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public static string GetPageAltName(IPageHeader that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "pageAltName");
 
 		///<summary>
-		/// Page Image
+		/// Page Image: 1920 × 1200 px
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]

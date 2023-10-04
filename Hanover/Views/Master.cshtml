@@ -1,7 +1,12 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Models
 @{
-	Layout = null;
+    Layout = null;
+    var root = Model.Root();
+    var socialLinks =  root.Value<IEnumerable<BlockListItem>>("footerSocial");
+    var logo = root.Value<MediaWithCrops>("webSiteLogo");
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +14,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>The Cappa Luxury Hotel</title>
+    <title>@root.Value("browserHeader")</title>
     <link rel="shortcut icon" href="~/img/favicon.png" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
     <link rel="stylesheet" href="~/css/plugin.css" />
@@ -35,8 +40,7 @@
         <div class="container">
             <!-- Logo -->
             <div class="logo-wrapper">
-                <a class="logo" href="@Model.Root().Url()"> <img src="img/logo.png" class="logo-img" alt=""> </a>
-                <!-- <a class="logo" href="index.html"> <h2>THE CAPPA <span>Luxury Hotel</span></h2> </a> -->
+                <a class="logo" href="@Model.Root().Url()"> <img src="@logo?.MediaUrl()" class="logo-img" alt="Hanover Hotel Logo"> </a>
             </div>
             <!-- Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"><i class="ti-menu"></i></span> </button>
@@ -44,16 +48,16 @@
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="@Model.Root().Url()">@Umbraco.GetDictionaryValue("Home")</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">@Umbraco.GetDictionaryValue("About")</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">@Umbraco.GetDictionaryValue("Rooms")</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">@Umbraco.GetDictionaryValue("VisitorInformation")</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">@Umbraco.GetDictionaryValue("CafeBistro")</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">@Umbraco.GetDictionaryValue("Contact")</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">@Umbraco.GetDictionaryValue("About")</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/rooms">@Umbraco.GetDictionaryValue("Rooms")</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/visitor-information">@Umbraco.GetDictionaryValue("VisitorInformation")</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/cafe-bistro">@Umbraco.GetDictionaryValue("CafeBistro")</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">@Umbraco.GetDictionaryValue("Contact")</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-   @RenderBody()
+    @RenderBody()
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-top">
@@ -61,44 +65,51 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="footer-column footer-about">
-                            <h3 class="footer-title">About Hotel</h3>
-                            <p class="footer-about-text">Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat.</p>
+                            <h3 class="footer-title">@root.Value("footerAboutHotel")</h3>
+                            <p class="footer-about-text">@root.Value("footerAboutHotelContent")</p>
 
-                            <div class="footer-language"> <i class="lni ti-world"></i>
-                                    <select>
-                                        <option value="1">English</option>
-                                        <option value="2">German</option>
-                                    </select>
-                                </div>
+                            @* <div class="footer-language">
+                            <i class="lni ti-world"></i>
+                            <select>
+                            <option value="1">English</option>
+                            <option value="2">German</option>
+                            </select>
+                            </div>*@
                         </div>
                     </div>
                     <div class="col-md-3 offset-md-1">
                         <div class="footer-column footer-explore clearfix">
                             <h3 class="footer-title">Explore</h3>
                             <ul class="footer-explore-list list-unstyled">
-                                <li><a href="">Home</a></li>
-                                <li ><a href="">About</a></li>
-                                <li ><a href="">Rooms</a></li>
-                                <li ><a href="">Visitor Information</a></li>
-                                <li ><a href="">Cafe & Bistro</a></li>
-                                <li ><a href="">Contact</a></li>
+                                <li><a href="@Model.Root().Url()">Home</a></li>
+                                <li><a href="/about">About</a></li>
+                                <li><a href="/rooms">Rooms</a></li>
+                                <li><a href="/visitor-information">Visitor Information</a></li>
+                                <li><a href="/cafe-bistro">Cafe & Bistro</a></li>
+                                <li><a href="/contact">Contact</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="footer-column footer-contact">
-                            <h3 class="footer-title">Contact</h3>
-                            <p class="footer-contact-text">1616 Broadway NY, New York 10001<br>United States of America</p>
+                            <h3 class="footer-title">@root.Value("footerContactHeader")</h3>
+                            <p class="footer-contact-text">@root.Value("footerContactContent")</p>
                             <div class="footer-contact-info">
-                                <p class="footer-contact-phone"><span class="flaticon-call"></span> 855 100 4444</p>
-                                <p class="footer-contact-mail">info@luxuryhotel.com</p>
+                                <p class="footer-contact-phone"><span class="flaticon-call"></span> @root.Value("footerPhoneNumber")</p>
+                                <p class="footer-contact-mail">@root.Value("footerMailAddress")</p>
                             </div>
                             <div class="footer-about-social-list">
-                                <a href="#"><i class="ti-instagram"></i></a>
-                                <a href="#"><i class="ti-twitter"></i></a>
-                                <a href="#"><i class="ti-youtube"></i></a>
-                                <a href="#"><i class="ti-facebook"></i></a>
-                                <a href="#"><i class="ti-pinterest"></i></a>
+                                @{
+                                    if (socialLinks.Any())
+                                    {
+                                        foreach (var item in socialLinks)
+                                        {
+                                            var socialLink = item.Content.Value<Link>("socialLink1");
+                                            <a href="@socialLink?.Url" target="@socialLink?.Target"><i class="@item.Content.Value("socialIcon")"></i></a>
+                                        }
+                                    }
+                                }
+
                             </div>
                         </div>
                     </div>
@@ -110,7 +121,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="footer-bottom-inner">
-                            <p class="footer-bottom-copy-right">© Copyright 2023 by <a href="#">DuruThemes.com</a></p>
+                            <p class="footer-bottom-copy-right">© Copyright 2023 by <a href="https://bilen.uk/" target="_blank">Bilen Software</a></p>
                         </div>
                     </div>
                 </div>
