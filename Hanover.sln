@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32825.248
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hanover", "Hanover\Hanover.csproj", "{64AE6872-0AF1-40CE-8665-A96D55ADE021}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{64AE6872-0AF1-40CE-8665-A96D55ADE021}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64AE6872-0AF1-40CE-8665-A96D55ADE021}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64AE6872-0AF1-40CE-8665-A96D55ADE021}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64AE6872-0AF1-40CE-8665-A96D55ADE021}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D977168-45B9-459C-A3E7-CC4C407031E7}
+	EndGlobalSection
+EndGlobal
