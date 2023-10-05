@@ -98,6 +98,22 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string RoomDetailTitle => this.Value<string>(_publishedValueFallback, "roomDetailTitle");
 
 		///<summary>
+		/// Room Home Page Image
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("roomHomePageImage")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops RoomHomePageImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "roomHomePageImage");
+
+		///<summary>
+		/// Room Price
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("roomPrice")]
+		public virtual string RoomPrice => this.Value<string>(_publishedValueFallback, "roomPrice");
+
+		///<summary>
 		/// Content
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]

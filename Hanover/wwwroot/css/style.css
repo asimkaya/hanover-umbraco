@@ -6202,3 +6202,31 @@ select {
         text-align: center;
     }
 }
+
+
+/*CUSTOM CSS */
+.room-facilities-1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.room-facilities-1 .room-properties {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.room-facilities-1 .room-properties i {
+    margin-right: 10px;
+    color: #aa8453;
+    font-size: 20px;
+}
+
+.room-facilities-1 .room-properties p {
+    font-size: 15px;
+    margin-bottom: 0 !important;
+    line-height: 1 !important;
+}
