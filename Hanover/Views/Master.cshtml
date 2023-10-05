@@ -11,6 +11,7 @@
 }
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -20,11 +21,13 @@
     <meta name="description" content="@Model.Value("metaDescription")">
     <meta name="keywords" content="@Model.Value("metaTags")">
     <link rel="shortcut icon" href="@favicon?.MediaUrl()" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
     <link rel="stylesheet" href="~/css/plugin.css" />
-    <link rel="stylesheet" href="~/css/style.css" />
+    <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
 
 </head>
+
 <body>
     <!-- Preloader -->
     <div class="preloader-bg"></div>
@@ -44,19 +47,26 @@
         <div class="container">
             <!-- Logo -->
             <div class="logo-wrapper">
-                <a class="logo" href="@Model.Root().Url()"> <img src="@logo?.MediaUrl()" class="logo-img" alt="Hanover Hotel Logo"> </a>
+                <a class="logo" href="@Model.Root().Url()"> <img src="@logo?.MediaUrl()" class="logo-img"
+                        alt="Hanover Hotel Logo"> </a>
             </div>
             <!-- Button -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"><i class="ti-menu"></i></span> </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span
+                    class="navbar-toggler-icon"><i class="ti-menu"></i></span> </button>
             <!-- Menu -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="@Model.Root().Url()">@Umbraco.GetDictionaryValue("Home")</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                            href="@Model.Root().Url()">@Umbraco.GetDictionaryValue("Home")</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about">@Umbraco.GetDictionaryValue("About")</a></li>
                     <li class="nav-item"><a class="nav-link" href="/rooms">@Umbraco.GetDictionaryValue("Rooms")</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/visitor-information">@Umbraco.GetDictionaryValue("VisitorInformation")</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/cafe-bistro">@Umbraco.GetDictionaryValue("CafeBistro")</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contact">@Umbraco.GetDictionaryValue("Contact")</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                            href="/visitor-information">@Umbraco.GetDictionaryValue("VisitorInformation")</a></li>
+                    <li class="nav-item"><a class="nav-link"
+                            href="/cafe-bistro">@Umbraco.GetDictionaryValue("CafeBistro")</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">@Umbraco.GetDictionaryValue("Contact")</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -99,7 +109,8 @@
                             <h3 class="footer-title">@root.Value("footerContactHeader")</h3>
                             <p class="footer-contact-text">@root.Value("footerContactContent")</p>
                             <div class="footer-contact-info">
-                                <p class="footer-contact-phone"><span class="flaticon-call"></span> @root.Value("footerPhoneNumber")</p>
+                                <p class="footer-contact-phone"><span class="flaticon-call"></span>
+                                    @root.Value("footerPhoneNumber")</p>
                                 <p class="footer-contact-mail">@root.Value("footerMailAddress")</p>
                             </div>
                             <div class="footer-about-social-list">
@@ -109,7 +120,8 @@
                                         foreach (var item in socialLinks)
                                         {
                                             var socialLink = item.Content.Value<Link>("socialLink1");
-                                            <a href="@socialLink?.Url" target="@socialLink?.Target"><i class="@item.Content.Value("socialIcon")"></i></a>
+                                            <a href="@socialLink?.Url" target="@socialLink?.Target"><i
+                                                    class="@item.Content.Value("socialIcon")"></i></a>
                                         }
                                     }
                                 }
@@ -125,7 +137,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="footer-bottom-inner">
-                            <p class="footer-bottom-copy-right">© Copyright 2023 by <a href="https://bilen.uk/" target="_blank">Bilen Software</a></p>
+                            <p class="footer-bottom-copy-right">© Copyright 2023 by <a href="https://bilen.uk/"
+                                    target="_blank">Bilen Software</a></p>
                         </div>
                     </div>
                 </div>
@@ -150,6 +163,7 @@
     <script src="~/scripts/select2.js"></script>
     <script src="~/scripts/datepicker.js"></script>
     <script src="~/scripts/smooth-scroll.min.js"></script>
-    <script src="~/scripts/custom.js"></script>
+    <script src="~/scripts/custom.js" asp-append-version="true"></script>
 </body>
+
 </html>
