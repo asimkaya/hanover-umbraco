@@ -5,8 +5,9 @@
 @{
     Layout = null;
     var root = Model.Root();
-    var socialLinks =  root.Value<IEnumerable<BlockListItem>>("footerSocial");
+    var socialLinks = root.Value<IEnumerable<BlockListItem>>("footerSocial");
     var logo = root.Value<MediaWithCrops>("webSiteLogo");
+    var favicon = root.Value<MediaWithCrops>("favicon");
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +16,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>@root.Value("browserHeader")</title>
-    <link rel="shortcut icon" href="~/img/favicon.png" />
+    <meta name="title" content="@Model.Value("metaHeader")">
+    <meta name="description" content="@Model.Value("metaDescription")">
+    <meta name="keywords" content="@Model.Value("metaTags")">
+    <link rel="shortcut icon" href="@favicon?.MediaUrl()" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
     <link rel="stylesheet" href="~/css/plugin.css" />
     <link rel="stylesheet" href="~/css/style.css" />
