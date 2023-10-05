@@ -1,15 +1,23 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Core.Models;
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
+    var root = Model.Root();
+    var homeSlider = Model.Value<IEnumerable<BlockListItem>>("homeSliderItems");
 }
 
 
- <!-- Slider -->
-    <header class="header slider-fade">
-        <div class="owl-carousel owl-theme">
-            <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
-            <div class="text-center item bg-img" data-overlay-dark="2" data-background="img/slider/2.jpg">
+<!-- Slider -->
+<header class="header slider-fade">
+    <div class="owl-carousel owl-theme">
+        <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
+        @foreach (var item in homeSlider)
+        {
+            var homeSliderImage = item.Content.Value<MediaWithCrops>("homeSliderImage");
+            var homeSliderLink = item.Content.Value<Link>("homeSliderLink");
+            <div class="text-center item bg-img" data-overlay-dark="2" data-background="@homeSliderImage.MediaUrl()">
                 <div class="v-middle caption">
                     <div class="container">
                         <div class="row">
@@ -21,387 +29,355 @@
                                     <i class="star-rating"></i>
                                     <i class="star-rating"></i>
                                 </span>
-                                <h4>Luxury Hotel & Best Resort</h4>
-                                <h1>Enjoy a Luxury Experience</h1>
-                                <div class="butn-light mt-30 mb-30"> <a href="#" data-scroll-nav="1"><span>Rooms & Suites</span></a> </div>
+                                <h4>@item.Content.Value("homeSliderSubtitle")</h4>
+                                <h1>@item.Content.Value("homeSliderTitle")</h1>
+                                @if (homeSliderLink != null)
+                                {
+                                    <div class="butn-light mt-30 mb-30"> <a href="@homeSliderLink.Url" target="@homeSliderLink.Target" data-scroll-nav="1"><span>Rooms & Suites</span></a> </div>
+                                }
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="text-center item bg-img" data-overlay-dark="2" data-background="img/slider/3.jpg">
-                <div class="v-middle caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-10 offset-md-1">
-                                <span>
-                                    <i class="star-rating"></i>
-                                    <i class="star-rating"></i>
-                                    <i class="star-rating"></i>
-                                    <i class="star-rating"></i>
-                                    <i class="star-rating"></i>
-                                </span>
-                                <h4>Unique Place to Relax & Enjoy</h4>
-                                <h1>The Perfect Base For You</h1>
-                                <div class="butn-light mt-30 mb-30"> <a href="#" data-scroll-nav="1"><span>Rooms & Suites</span></a> </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center item bg-img" data-overlay-dark="3" data-background="img/slider/1.jpg">
-                <div class="v-middle caption">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-10 offset-md-1">
-                                <span>
-                                    <i class="star-rating"></i>
-                                    <i class="star-rating"></i>
-                                    <i class="star-rating"></i>
-                                    <i class="star-rating"></i>
-                                    <i class="star-rating"></i>
-                                </span>
-                                <h4>The Ultimate Luxury Experience</h4>
-                                <h1>Enjoy The Best Moments of Life</h1>
-                                <div class="butn-light mt-30 mb-30"> <a href="#" data-scroll-nav="1"><span>Rooms & Suites</span></a> </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- slider reservation -->
+        }
+
+    </div>
+    <!-- slider reservation -->
+    @if (!string.IsNullOrEmpty(Model.Value("sliderAreaPhoneNumber").ToString()))
+    {
+
         <div class="reservation">
-            <a href="tel:8551004444">
+            <a href="tel:@Model.Value("sliderAreaPhoneNumber")">
                 <div class="icon d-flex justify-content-center align-items-center">
                     <i class="flaticon-call"></i>
                 </div>
-                <div class="call"><span>855 100 4444</span> <br>Reservation</div>
+                <div class="call"><span>@Model.Value("sliderAreaPhoneNumber")</span> <br>Reservation</div>
             </a>
         </div>
-    </header>
-    
-    <!-- About -->
-    <section class="about section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
-                    <span>
-                        <i class="star-rating"></i>
-                        <i class="star-rating"></i>
-                        <i class="star-rating"></i>
-                        <i class="star-rating"></i>
-                        <i class="star-rating"></i>
-                    </span>
-                    <div class="section-subtitle">The Cappa Luxury Hotel</div>
-                    <div class="section-title">Enjoy a Luxury Experience</div>
-                    <p>Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat. Donec in quis the pellentesque velit. Donec id velit ac arcu posuere blane.</p>
-                    <p>Hotel ut nisl quam nestibulum ac quam nec odio elementum sceisue the aucan ligula. Orci varius natoque penatibus et magnis dis parturient monte nascete ridiculus mus nellentesque habitant morbine.</p>
-                    <!-- call -->
-                    <div class="reservations">
-                        <div class="icon"><span class="flaticon-call"></span></div>
-                        <div class="text">
-                            <p>Reservation</p> <a href="tel:855-100-4444">855 100 4444</a>
-                        </div>
+    }
+</header>
+
+<!-- About -->
+<section class="about section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
+                <span>
+                    <i class="star-rating"></i>
+                    <i class="star-rating"></i>
+                    <i class="star-rating"></i>
+                    <i class="star-rating"></i>
+                    <i class="star-rating"></i>
+                </span>
+                <div class="section-subtitle">The Cappa Luxury Hotel</div>
+                <div class="section-title">Enjoy a Luxury Experience</div>
+                <p>Welcome to the best five-star deluxe hotel in New York. Hotel elementum sesue the aucan vestibulum aliquam justo in sapien rutrum volutpat. Donec in quis the pellentesque velit. Donec id velit ac arcu posuere blane.</p>
+                <p>Hotel ut nisl quam nestibulum ac quam nec odio elementum sceisue the aucan ligula. Orci varius natoque penatibus et magnis dis parturient monte nascete ridiculus mus nellentesque habitant morbine.</p>
+                <!-- call -->
+                <div class="reservations">
+                    <div class="icon"><span class="flaticon-call"></span></div>
+                    <div class="text">
+                        <p>Reservation</p> <a href="tel:855-100-4444">855 100 4444</a>
                     </div>
                 </div>
-                <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
-                    <img src="img/rooms/8.jpg" alt="" class="mt-90 mb-30">
-                </div>
-                <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
-                    <img src="img/rooms/2.jpg" alt="">
-                </div>
+            </div>
+            <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
+                <img src="img/rooms/8.jpg" alt="" class="mt-90 mb-30">
+            </div>
+            <div class="col col-md-3 animate-box" data-animate-effect="fadeInUp">
+                <img src="img/rooms/2.jpg" alt="">
             </div>
         </div>
-    </section>
-    <!-- Rooms -->
-     <div class="rooms3 section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="square-flip">
-                        <div class="square bg-img" data-background="img/rooms/1.jpg">
-                            <span class="category"><a href="rooms2.html">Book</a></span>
-                            <div class="square-container d-flex align-items-end justify-content-end">
-                                <div class="box-title">
-                                    <h6>150$ / Night</h6>
-                                    <h4>Junior Suite</h4>
-                                </div>
-                            </div>
-                            <div class="flip-overlay"></div>
-                        </div>
-                        <div class="square2">
-                            <div class="square-container2">
+    </div>
+</section>
+<!-- Rooms -->
+<div class="rooms3 section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="square-flip">
+                    <div class="square bg-img" data-background="img/rooms/1.jpg">
+                        <span class="category"><a href="rooms2.html">Book</a></span>
+                        <div class="square-container d-flex align-items-end justify-content-end">
+                            <div class="box-title">
                                 <h6>150$ / Night</h6>
                                 <h4>Junior Suite</h4>
-                                <p>Hotel viverra tristique ustoni miss vitae sediam neque nivamus aestan.</p>
-                                <div class="row room-facilities mb-30">
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li><i class="flaticon-group"></i> 1-2 Persons</li>
-                                            <li><i class="flaticon-wifi"></i> Free Wifi</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul> 
-                                           <li><i class="flaticon-bed"></i> Twin Bed</li>
-                                           <li><i class="flaticon-breakfast"></i> Breakfast</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="btn-line"><a href="room-details.html">Details</a></div>
                             </div>
+                        </div>
+                        <div class="flip-overlay"></div>
+                    </div>
+                    <div class="square2">
+                        <div class="square-container2">
+                            <h6>150$ / Night</h6>
+                            <h4>Junior Suite</h4>
+                            <p>Hotel viverra tristique ustoni miss vitae sediam neque nivamus aestan.</p>
+                            <div class="row room-facilities mb-30">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><i class="flaticon-group"></i> 1-2 Persons</li>
+                                        <li><i class="flaticon-wifi"></i> Free Wifi</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><i class="flaticon-bed"></i> Twin Bed</li>
+                                        <li><i class="flaticon-breakfast"></i> Breakfast</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="btn-line"><a href="room-details.html">Details</a></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="square-flip">
-                        <div class="square bg-img" data-background="img/rooms/2.jpg">
-                            <span class="category"><a href="rooms2.html">Book</a></span>
-                            <div class="square-container d-flex align-items-end justify-content-end">
-                                <div class="box-title">
-                                    <h6>200$ / Night</h6>
-                                    <h4>Family Room</h4>
-                                </div>
-                            </div>
-                            <div class="flip-overlay"></div>
-                        </div>
-                        <div class="square2">
-                            <div class="square-container2">
+            </div>
+            <div class="col-md-4">
+                <div class="square-flip">
+                    <div class="square bg-img" data-background="img/rooms/2.jpg">
+                        <span class="category"><a href="rooms2.html">Book</a></span>
+                        <div class="square-container d-flex align-items-end justify-content-end">
+                            <div class="box-title">
                                 <h6>200$ / Night</h6>
                                 <h4>Family Room</h4>
-                                <p>Hotel viverra tristique ustoni miss vitae sediam neque nivamus aestan.</p>
-                                <div class="row room-facilities mb-30">
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li><i class="flaticon-group"></i> 1-2 Persons</li>
-                                            <li><i class="flaticon-wifi"></i> Free Wifi</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul> 
-                                           <li><i class="flaticon-bed"></i> Twin Bed</li>
-                                           <li><i class="flaticon-breakfast"></i> Breakfast</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="btn-line"><a href="room-details.html">Details</a></div>
                             </div>
+                        </div>
+                        <div class="flip-overlay"></div>
+                    </div>
+                    <div class="square2">
+                        <div class="square-container2">
+                            <h6>200$ / Night</h6>
+                            <h4>Family Room</h4>
+                            <p>Hotel viverra tristique ustoni miss vitae sediam neque nivamus aestan.</p>
+                            <div class="row room-facilities mb-30">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><i class="flaticon-group"></i> 1-2 Persons</li>
+                                        <li><i class="flaticon-wifi"></i> Free Wifi</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><i class="flaticon-bed"></i> Twin Bed</li>
+                                        <li><i class="flaticon-breakfast"></i> Breakfast</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="btn-line"><a href="room-details.html">Details</a></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="square-flip">
-                        <div class="square bg-img" data-background="img/rooms/3.jpg">
-                            <span class="category"><a href="rooms2.html">Book</a></span>
-                            <div class="square-container d-flex align-items-end justify-content-end">
-                                <div class="box-title">
-                                    <h6>250$ / Night</h6>
-                                    <h4>Double Room</h4>
-                                </div>
-                            </div>
-                            <div class="flip-overlay"></div>
-                        </div>
-                        <div class="square2">
-                            <div class="square-container2">
+            </div>
+            <div class="col-md-4">
+                <div class="square-flip">
+                    <div class="square bg-img" data-background="img/rooms/3.jpg">
+                        <span class="category"><a href="rooms2.html">Book</a></span>
+                        <div class="square-container d-flex align-items-end justify-content-end">
+                            <div class="box-title">
                                 <h6>250$ / Night</h6>
                                 <h4>Double Room</h4>
-                                <p>Hotel viverra tristique ustoni miss vitae sediam neque nivamus aestan.</p>
-                                <div class="row room-facilities mb-30">
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li><i class="flaticon-group"></i> 1-2 Persons</li>
-                                            <li><i class="flaticon-wifi"></i> Free Wifi</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul> 
-                                           <li><i class="flaticon-bed"></i> Twin Bed</li>
-                                           <li><i class="flaticon-breakfast"></i> Breakfast</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="btn-line"><a href="room-details.html">Details</a></div>
                             </div>
+                        </div>
+                        <div class="flip-overlay"></div>
+                    </div>
+                    <div class="square2">
+                        <div class="square-container2">
+                            <h6>250$ / Night</h6>
+                            <h4>Double Room</h4>
+                            <p>Hotel viverra tristique ustoni miss vitae sediam neque nivamus aestan.</p>
+                            <div class="row room-facilities mb-30">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><i class="flaticon-group"></i> 1-2 Persons</li>
+                                        <li><i class="flaticon-wifi"></i> Free Wifi</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><i class="flaticon-bed"></i> Twin Bed</li>
+                                        <li><i class="flaticon-breakfast"></i> Breakfast</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="btn-line"><a href="room-details.html">Details</a></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="square-flip">
-                        <div class="square bg-img" data-background="img/rooms/6.jpg">
-                            <span class="category"><a href="rooms2.html">Book</a></span>
-                            <div class="square-container d-flex align-items-end justify-content-end">
-                                <div class="box-title">
-                                    <h6>300$ / Night</h6>
-                                    <h4>Deluxe Room</h4>
-                                </div>
-                            </div>
-                            <div class="flip-overlay"></div>
-                        </div>
-                        <div class="square2">
-                            <div class="square-container2">
+            </div>
+            <div class="col-md-4">
+                <div class="square-flip">
+                    <div class="square bg-img" data-background="img/rooms/6.jpg">
+                        <span class="category"><a href="rooms2.html">Book</a></span>
+                        <div class="square-container d-flex align-items-end justify-content-end">
+                            <div class="box-title">
                                 <h6>300$ / Night</h6>
                                 <h4>Deluxe Room</h4>
-                                <p>Hotel viverra tristique ustoni miss vitae sediam neque nivamus aestan.</p>
-                                <div class="row room-facilities mb-30">
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li><i class="flaticon-group"></i> 1-2 Persons</li>
-                                            <li><i class="flaticon-wifi"></i> Free Wifi</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul> 
-                                           <li><i class="flaticon-bed"></i> Twin Bed</li>
-                                           <li><i class="flaticon-breakfast"></i> Breakfast</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="btn-line"><a href="room-details.html">Details</a></div>
                             </div>
+                        </div>
+                        <div class="flip-overlay"></div>
+                    </div>
+                    <div class="square2">
+                        <div class="square-container2">
+                            <h6>300$ / Night</h6>
+                            <h4>Deluxe Room</h4>
+                            <p>Hotel viverra tristique ustoni miss vitae sediam neque nivamus aestan.</p>
+                            <div class="row room-facilities mb-30">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><i class="flaticon-group"></i> 1-2 Persons</li>
+                                        <li><i class="flaticon-wifi"></i> Free Wifi</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><i class="flaticon-bed"></i> Twin Bed</li>
+                                        <li><i class="flaticon-breakfast"></i> Breakfast</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="btn-line"><a href="room-details.html">Details</a></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="square-flip">
-                        <div class="square bg-img" data-background="img/rooms/8.jpg">
-                            <span class="category"><a href="rooms2.html">Book</a></span>
-                            <div class="square-container d-flex align-items-end justify-content-end">
-                                <div class="box-title">
-                                    <h6>350$ / Night</h6>
-                                    <h4>Superior Room</h4>
-                                </div>
-                            </div>
-                            <div class="flip-overlay"></div>
-                        </div>
-                        <div class="square2">
-                            <div class="square-container2">
+            </div>
+            <div class="col-md-4">
+                <div class="square-flip">
+                    <div class="square bg-img" data-background="img/rooms/8.jpg">
+                        <span class="category"><a href="rooms2.html">Book</a></span>
+                        <div class="square-container d-flex align-items-end justify-content-end">
+                            <div class="box-title">
                                 <h6>350$ / Night</h6>
                                 <h4>Superior Room</h4>
-                                <p>Hotel viverra tristique ustoni miss vitae sediam neque nivamus aestan.</p>
-                                <div class="row room-facilities mb-30">
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li><i class="flaticon-group"></i> 1-2 Persons</li>
-                                            <li><i class="flaticon-wifi"></i> Free Wifi</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul> 
-                                           <li><i class="flaticon-bed"></i> Twin Bed</li>
-                                           <li><i class="flaticon-breakfast"></i> Breakfast</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="btn-line"><a href="room-details.html">Details</a></div>
                             </div>
+                        </div>
+                        <div class="flip-overlay"></div>
+                    </div>
+                    <div class="square2">
+                        <div class="square-container2">
+                            <h6>350$ / Night</h6>
+                            <h4>Superior Room</h4>
+                            <p>Hotel viverra tristique ustoni miss vitae sediam neque nivamus aestan.</p>
+                            <div class="row room-facilities mb-30">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><i class="flaticon-group"></i> 1-2 Persons</li>
+                                        <li><i class="flaticon-wifi"></i> Free Wifi</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><i class="flaticon-bed"></i> Twin Bed</li>
+                                        <li><i class="flaticon-breakfast"></i> Breakfast</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="btn-line"><a href="room-details.html">Details</a></div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="square-flip">
-                        <div class="square bg-img" data-background="img/rooms/9.jpg">
-                            <span class="category"><a href="rooms2.html">Book</a></span>
-                            <div class="square-container d-flex align-items-end justify-content-end">
-                                <div class="box-title">
-                                    <h6>400$ / Night</h6>
-                                    <h4>Wellness Room</h4>
-                                </div>
-                            </div>
-                            <div class="flip-overlay"></div>
-                        </div>
-                        <div class="square2">
-                            <div class="square-container2">
+            </div>
+            <div class="col-md-4">
+                <div class="square-flip">
+                    <div class="square bg-img" data-background="img/rooms/9.jpg">
+                        <span class="category"><a href="rooms2.html">Book</a></span>
+                        <div class="square-container d-flex align-items-end justify-content-end">
+                            <div class="box-title">
                                 <h6>400$ / Night</h6>
                                 <h4>Wellness Room</h4>
-                                <p>Hotel viverra tristique ustoni miss vitae sediam neque nivamus aestan.</p>
-                                <div class="row room-facilities mb-30">
-                                    <div class="col-md-6">
-                                        <ul>
-                                            <li><i class="flaticon-group"></i> 1-2 Persons</li>
-                                            <li><i class="flaticon-wifi"></i> Free Wifi</li>
-                                        </ul>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <ul> 
-                                           <li><i class="flaticon-bed"></i> Twin Bed</li>
-                                           <li><i class="flaticon-breakfast"></i> Breakfast</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="btn-line"><a href="room-details.html">Details</a></div>
                             </div>
+                        </div>
+                        <div class="flip-overlay"></div>
+                    </div>
+                    <div class="square2">
+                        <div class="square-container2">
+                            <h6>400$ / Night</h6>
+                            <h4>Wellness Room</h4>
+                            <p>Hotel viverra tristique ustoni miss vitae sediam neque nivamus aestan.</p>
+                            <div class="row room-facilities mb-30">
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><i class="flaticon-group"></i> 1-2 Persons</li>
+                                        <li><i class="flaticon-wifi"></i> Free Wifi</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <ul>
+                                        <li><i class="flaticon-bed"></i> Twin Bed</li>
+                                        <li><i class="flaticon-breakfast"></i> Breakfast</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="btn-line"><a href="room-details.html">Details</a></div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    
     </div>
-   
-    <!-- Facilties -->
-    <section class="facilties section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="section-subtitle">Our Services</div>
-                    <div class="section-title">Hotel Facilities</div>
+
+</div>
+
+<!-- Facilties -->
+<section class="facilties section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-subtitle">Our Services</div>
+                <div class="section-title">Hotel Facilities</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="single-facility animate-box" data-animate-effect="fadeInUp">
+                    <span class="flaticon-world"></span>
+                    <h5>Pick Up & Drop</h5>
+                    <p>We’ll pick up from airport while you comfy on your ride, mus nellentesque habitant.</p>
+                    <div class="facility-shape"> <span class="flaticon-world"></span> </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="single-facility animate-box" data-animate-effect="fadeInUp">
-                        <span class="flaticon-world"></span>
-                        <h5>Pick Up & Drop</h5>
-                        <p>We’ll pick up from airport while you comfy on your ride, mus nellentesque habitant.</p>
-                        <div class="facility-shape"> <span class="flaticon-world"></span> </div>
-                    </div>
+            <div class="col-md-4">
+                <div class="single-facility animate-box" data-animate-effect="fadeInUp">
+                    <span class="flaticon-car"></span>
+                    <h5>Parking Space</h5>
+                    <p>Fusce tincidunt nis ace park norttito sit amet space, mus nellentesque habitant.</p>
+                    <div class="facility-shape"> <span class="flaticon-car"></span> </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="single-facility animate-box" data-animate-effect="fadeInUp">
-                        <span class="flaticon-car"></span>
-                        <h5>Parking Space</h5>
-                        <p>Fusce tincidunt nis ace park norttito sit amet space, mus nellentesque habitant.</p>
-                        <div class="facility-shape"> <span class="flaticon-car"></span> </div>
-                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-facility animate-box" data-animate-effect="fadeInUp">
+                    <span class="flaticon-bed"></span>
+                    <h5>Room Service</h5>
+                    <p>Room tincidunt nis ace park norttito sit amet space, mus nellentesque habitant.</p>
+                    <div class="facility-shape"> <span class="flaticon-bed"></span> </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="single-facility animate-box" data-animate-effect="fadeInUp">
-                        <span class="flaticon-bed"></span>
-                        <h5>Room Service</h5>
-                        <p>Room tincidunt nis ace park norttito sit amet space, mus nellentesque habitant.</p>
-                        <div class="facility-shape"> <span class="flaticon-bed"></span> </div>
-                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-facility animate-box" data-animate-effect="fadeInUp">
+                    <span class="flaticon-swimming"></span>
+                    <h5>Swimming Pool</h5>
+                    <p>Swimming pool tincidunt nise ace park norttito sit space, mus nellentesque habitant.</p>
+                    <div class="facility-shape"> <span class="flaticon-swimming"></span> </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="single-facility animate-box" data-animate-effect="fadeInUp">
-                        <span class="flaticon-swimming"></span>
-                        <h5>Swimming Pool</h5>
-                        <p>Swimming pool tincidunt nise ace park norttito sit space, mus nellentesque habitant.</p>
-                        <div class="facility-shape"> <span class="flaticon-swimming"></span> </div>
-                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-facility animate-box" data-animate-effect="fadeInUp">
+                    <span class="flaticon-wifi"></span>
+                    <h5>Fibre Internet</h5>
+                    <p>Wifi tincidunt nis ace park norttito sit amet space, mus nellentesque habitant.</p>
+                    <div class="facility-shape"> <span class="flaticon-wifi"></span> </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="single-facility animate-box" data-animate-effect="fadeInUp">
-                        <span class="flaticon-wifi"></span>
-                        <h5>Fibre Internet</h5>
-                        <p>Wifi tincidunt nis ace park norttito sit amet space, mus nellentesque habitant.</p>
-                        <div class="facility-shape"> <span class="flaticon-wifi"></span> </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="single-facility animate-box" data-animate-effect="fadeInUp">
-                        <span class="flaticon-breakfast"></span>
-                        <h5>Breakfast</h5>
-                        <p>Eat tincidunt nisa ace park norttito sit amet space, mus nellentesque habitant</p>
-                        <div class="facility-shape"> <span class="flaticon-breakfast"></span> </div>
-                    </div>
+            </div>
+            <div class="col-md-4">
+                <div class="single-facility animate-box" data-animate-effect="fadeInUp">
+                    <span class="flaticon-breakfast"></span>
+                    <h5>Breakfast</h5>
+                    <p>Eat tincidunt nisa ace park norttito sit amet space, mus nellentesque habitant</p>
+                    <div class="facility-shape"> <span class="flaticon-breakfast"></span> </div>
                 </div>
             </div>
         </div>
-    </section>
-   
-  
-    
-   
-  
+    </div>
+</section>
+
+
+
+
