@@ -6201,6 +6201,10 @@ select {
     .video-fullscreen-wrap .caption {
         text-align: center;
     }
+    .menu-grid-layout {
+        grid-template-columns: repeat(1, 1fr) !important;
+        grid-row-gap: 1rem !important;
+    }
 }
 
 
@@ -6229,4 +6233,11 @@ select {
     font-size: 15px;
     margin-bottom: 0 !important;
     line-height: 1 !important;
+}
+
+.menu-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-column-gap: 7rem;
+    grid-row-gap: 2rem;
 }
