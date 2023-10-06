@@ -13,9 +13,6 @@
     .Where(x => x.IsVisible())
     .OrderByDescending(x => x.CreateDate);
     var services = Model.Value<IEnumerable<BlockListItem>>("homeServicesArea");
-
-
-
 }
 
 
@@ -129,7 +126,7 @@
                                 <h4>@item.Value("roomDetailTitle")</h4>
                                 <p>@item.Value("roomShortDescription")</p>
                                 <div class="room-facilities room-facilities-1 mb-30">
-                                    @foreach (var property in roomProperties)
+                                    @foreach (var property in roomProperties.Take(4))
                                     {
                                         <div class="room-properties">
                                             <i class="@property.Content.Value("roomPropertyIcon")"></i>
