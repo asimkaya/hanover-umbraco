@@ -1,98 +1,77 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using Umbraco.Cms.Core.Models;
+@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.VisitorInformation>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
+    var root = Model.Root();
+    var pageHeaderImage = Model.Value<MediaWithCrops>("pageImage");
+    var visitorServiceItem = Model.Value<IEnumerable<BlockListItem>>("visitorServiceItem");
+    int counter = 0;
 }
 
- <!-- Header Banner -->
-    <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="img/slider/3.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 text-left caption mt-90">
-                    <h5>Discover</h5>
-                    <h1>Our Services</h1>
-                </div>
+<!-- Header Banner -->
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="@pageHeaderImage.MediaUrl()">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 caption mt-90">
+                <h5>@Model.Value("pageAltName")</h5>
+                <h1>@Model.Value("pageName")</h1>
             </div>
         </div>
     </div>
-    <!-- Services -->
-    <section class="services section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
-                    <div class="img left">
-                        <a href="restaurant.html"><img src="img/restaurant/1.jpg" alt=""></a>
+</div>
+<!-- Services -->
+<section class="services section-padding">
+    <div class="container">
+        @foreach (var item in visitorServiceItem)
+        {
+            var itemImage = item.Content.Value<MediaWithCrops>("visitorImage");
+            if((counter % 2) == 0)
+            {
+                <div class="row">
+                    <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
+                        <div class="img left">
+                            <img src="@itemImage.MediaUrl()" alt="Hanover Visitor Information Service Image">
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6 p-0 bg-cream valign animate-box" data-animate-effect="fadeInRight">
-                    <div class="content">
-                        <div class="cont text-left">
-                            <div class="info">
-                                <h6>Discover</h6>
+                    <div class="col-md-6 p-0 bg-cream valign animate-box" data-animate-effect="fadeInRight">
+                        <div class="content">
+                            <div class="cont text-left">
+                                <div class="info">
+                                    <h6>@item.Content.Value("visitorSubtitle")</h6>
+                                </div>
+                                <h4>@item.Content.Value("visitorTitle")</h4>
+                                <p>@item.Content.Value("visitorContent")</p>
                             </div>
-                            <h4>The Restaurant</h4>
-                            <p>Restaurant inilla duiman at elit finibus viverra nec a lacus themo the nesudea seneoice misuscipit non sagie the fermen ziverra tristiue duru the ivite dianne onen nivami acsestion augue artine.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 bg-cream p-0 order2 valign animate-box" data-animate-effect="fadeInLeft">
-                    <div class="content">
-                        <div class="cont text-left">
-                            <div class="info">
-                                <h6>Experiences</h6>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-md-6 bg-cream p-0 order2 valign animate-box" data-animate-effect="fadeInLeft">
+                        <div class="content">
+                            <div class="cont text-left">
+                                <div class="info">
+                                    <h6>@item.Content.Value("visitorSubtitle")</h6>
+                                </div>
+                                <h4>@item.Content.Value("visitorTitle")</h4>
+                                <p>@item.Content.Value("visitorContent")</p>
+
                             </div>
-                            <h4>Spa Center</h4>
-                            <p>Spa center inilla duiman at elit finibus viverra nec a lacus themo the nesudea seneoice misuscipit non sagie the fermen ziverra tristiue duru the ivite dianne onen nivami acsestion augue artine.</p>
-                    
+                        </div>
+                    </div>
+                    <div class="col-md-6 p-0 order1 animate-box" data-animate-effect="fadeInRight">
+                        <div class="img">
+                            <img src="@itemImage.MediaUrl()" alt="Hanover Visitor Information Service Image">
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 p-0 order1 animate-box" data-animate-effect="fadeInRight">
-                    <div class="img">
-                        <a href="spa-wellness.html"><img src="img/spa/3.jpg" alt=""></a>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">
-                    <div class="img left">
-                        <a href="spa-wellness.html"><img src="img/spa/2.jpg" alt=""></a>
-                    </div>
-                </div>
-                <div class="col-md-6 p-0 bg-cream valign animate-box" data-animate-effect="fadeInRight">
-                    <div class="content">
-                        <div class="cont text-left">
-                            <div class="info">
-                                <h6>Modern</h6>
-                            </div>
-                            <h4>Fitness Center</h4>
-                            <p>Restaurant inilla duiman at elit finibus viverra nec a lacus themo the nesudea seneoice misuscipit non sagie the fermen ziverra tristiue duru the ivite dianne onen nivami acsestion augue artine.</p>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 bg-cream p-0 order2 valign animate-box" data-animate-effect="fadeInLeft">
-                    <div class="content">
-                        <div class="cont text-left">
-                            <div class="info">
-                                <h6>Experiences</h6>
-                            </div>
-                            <h4>The Health Club & Pool</h4>
-                            <p>The health club & pool at elit finibus viverra nec a lacus themo the nesudea seneoice misuscipit non sagie the fermen ziverra tristiue duru the ivite dianne onen nivami acsestion augue artine.</p>
-                         
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 p-0 order1 animate-box" data-animate-effect="fadeInRight">
-                    <div class="img">
-                        <a href="spa-wellness.html"><img src="img/spa/1.jpg" alt=""></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            }
+            counter++;
+        }
+    </div>
+</section>
