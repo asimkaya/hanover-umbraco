@@ -1,166 +1,68 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using Umbraco.Cms.Core.Models;
+@using Umbraco.Cms.Core.Models.Blocks;
+@using Umbraco.Cms.Web.Common.PublishedModels;
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.Rooms>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
+    var root = Model.Root();
+    var pageHeaderImage = Model.Value<MediaWithCrops>("pageImage");
+    int counter = 2;
+    var rooms = Umbraco.Content(Guid.Parse("bdd98559-1763-4a3a-81d3-22d09bbb9da8"))
+    .Children()
+    .Where(x => x.IsVisible())
+    .OrderByDescending(x => x.CreateDate);
 }
 
- <!-- Header Banner -->
-    <div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="img/slider/1.jpg">
-        <div class="container">
-            <div class="row">
-				<div class="col-md-12 caption mt-90">
-				    <span>
-                        <i class="star-rating"></i>
-                        <i class="star-rating"></i>
-                        <i class="star-rating"></i>
-                        <i class="star-rating"></i>
-                        <i class="star-rating"></i>
-                    </span>
-					<h5>The Cappa Luxury Hotel</h5>
-					<h1>Rooms & Suites</h1>
-				</div>
-			</div>
-        </div>
-    </div>
-    <!-- Rooms -->
-    <section class="section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="rooms2 mb-90 animate-box" data-animate-effect="fadeInUp">
-                        <figure><img src="img/slider/4.jpg" alt="" class="img-fluid"></figure>
-                        <div class="caption">
-                            <h3>150$ <span>/ Night</span></h3>
-                            <h4><a href="room-details.html">Junior Suite</a></h4>
-                            <p>Spacious, bright guestrooms with tasteful furnishing, wooden floor and panoramic windows from the ceiling to the floor.</p>
-                            <div class="row room-facilities">
-                                <div class="col-md-4">
-                                    <ul>
-                                        <li><i class="flaticon-group"></i> 1-2 Persons</li>
-                                        <li><i class="flaticon-wifi"></i> Free Wifi</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <ul>
-                                        <li><i class="flaticon-bed"></i> Twin Bed</li>
-                                        <li><i class="flaticon-breakfast"></i> Breakfast</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <ul>
-                                        <li><i class="flaticon-clock-1"></i> 200 sqft room</li>
-                                        <li><i class="flaticon-swimming"></i> Swimming Pool</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <hr class="border-2">
-                            <div class="info-wrapper">
-                                <div class="more"><a href="room-details.html" class="link-btn" tabindex="0">Details <i class="ti-arrow-right"></i></a></div>
-                                <div class="butn-dark"> <a href="#" data-scroll-nav="1"><span>Book Now</span></a> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rooms2 mb-90 left animate-box" data-animate-effect="fadeInUp">
-                        <figure><img src="img/slider/3.jpg" alt="" class="img-fluid"></figure>
-                        <div class="caption">
-                            <h3>200$ <span>/ Night</span></h3>
-                            <h4><a href="room-details.html">Family Room</a></h4>
-                            <p>Spacious, bright guestrooms with tasteful furnishing, wooden floor and panoramic windows from the ceiling to the floor.</p>
-                            <div class="row room-facilities">
-                                <div class="col-md-4">
-                                    <ul>
-                                        <li><i class="flaticon-group"></i> 1-2 Persons</li>
-                                        <li><i class="flaticon-wifi"></i> Free Wifi</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <ul>
-                                        <li><i class="flaticon-bed"></i> Twin Bed</li>
-                                        <li><i class="flaticon-breakfast"></i> Breakfast</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <ul>
-                                        <li><i class="flaticon-clock-1"></i> 200 sqft Room</li>
-                                        <li><i class="flaticon-swimming"></i> Swimming Pool</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <hr class="border-2">
-                            <div class="info-wrapper">
-                                <div class="more"><a href="room-details.html" class="link-btn" tabindex="0">Details <i class="ti-arrow-right"></i></a></div>
-                                <div class="butn-dark"> <a href="#" data-scroll-nav="1"><span>Book Now</span></a> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rooms2 mb-90 animate-box" data-animate-effect="fadeInUp">
-                        <figure><img src="img/slider/3.jpg" alt="" class="img-fluid"></figure>
-                        <div class="caption">
-                            <h3>250$ <span>/ Night</span></h3>
-                            <h4><a href="room-details.html">Double Room</a></h4>
-                            <p>Spacious, bright guestrooms with tasteful furnishing, wooden floor and panoramic windows from the ceiling to the floor.</p>
-                            <div class="row room-facilities">
-                                <div class="col-md-4">
-                                    <ul>
-                                        <li><i class="flaticon-group"></i> 2-3 Persons</li>
-                                        <li><i class="flaticon-wifi"></i> Free Wifi</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <ul>
-                                        <li><i class="flaticon-bed"></i> Twin Bed</li>
-                                        <li><i class="flaticon-breakfast"></i> Breakfast</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <ul>
-                                        <li><i class="flaticon-clock-1"></i> 200 sqft room</li>
-                                        <li><i class="flaticon-swimming"></i> Swimming Pool</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <hr class="border-2">
-                            <div class="info-wrapper">
-                                <div class="more"><a href="room-details.html" class="link-btn" tabindex="0">Details <i class="ti-arrow-right"></i></a></div>
-                                <div class="butn-dark"> <a href="#" data-scroll-nav="1"><span>Book Now</span></a> </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rooms2 left animate-box" data-animate-effect="fadeInUp">
-                        <figure><img src="img/slider/2.jpg" alt="" class="img-fluid"></figure>
-                        <div class="caption">
-                            <h3>300$ <span>/ Night</span></h3>
-                            <h4><a href="room-details.html">Deluxe Room</a></h4>
-                            <p>Spacious, bright guestrooms with tasteful furnishing, wooden floor and panoramic windows from the ceiling to the floor.</p>
-                            <div class="row room-facilities">
-                                <div class="col-md-4">
-                                    <ul>
-                                        <li><i class="flaticon-group"></i> 2-4 Persons</li>
-                                        <li><i class="flaticon-wifi"></i> Free Wifi</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <ul>
-                                        <li><i class="flaticon-bed"></i> Twin Bed</li>
-                                        <li><i class="flaticon-breakfast"></i> Breakfast</li>
-                                    </ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <ul>
-                                        <li><i class="flaticon-clock-1"></i> 200 sqft Room</li>
-                                        <li><i class="flaticon-swimming"></i> Swimming Pool</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <hr class="border-2">
-                            <div class="info-wrapper">
-                                <div class="more"><a href="room-details.html" class="link-btn" tabindex="0">Details <i class="ti-arrow-right"></i></a></div>
-                                <div class="butn-dark"> <a href="#" data-scroll-nav="1"><span>Book Now</span></a> </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<!-- Header Banner -->
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="@pageHeaderImage.MediaUrl()">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 caption mt-90">
+                <h5>@Model.Value("pageAltName")</h5>
+                <h1>@Model.Value("pageName")</h1>
             </div>
         </div>
-    </section>
+    </div>
+</div>
+<!-- Rooms -->
+<section class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @foreach (var item in rooms)
+                {
+                    var roomProperties = item.Value<IEnumerable<BlockListItem>>("roomPropertyContent");
+                    var roomImage = item.Value<MediaWithCrops>("roomHomePageImage");
+                    var bookLink = item.Value<Link>("link");
+                    string classNames = ((counter % 2) == 0) ? "rooms2 mb-90 animate-box" : "rooms2 mb-90 left animate-box";
+
+                    <div class="@classNames" data-animate-effect="fadeInUp">
+                        <figure><img src="@roomImage.MediaUrl()" alt="Hanover Room Image" class="img-fluid"></figure>
+                        <div class="caption">
+                            <h3>@item.Value("roomPrice") <span>/ Night</span></h3>
+                            <h4><a href="room-details.html">@item.Value("roomDetailTitle")</a></h4>
+                            <p>@item.Value("roomShortDescription")</p>
+                            <div class="room-facilities room-facilities-2 mb-30">
+                                @foreach (var property in roomProperties.Take(6))
+                                {
+                                    <div class="room-properties">
+                                        <i class="@property.Content.Value("roomPropertyIcon")"></i>
+                                        <p>@property.Content.Value("roomPropertyName")</p>
+                                    </div>
+                                }
+
+                            </div>
+                            <hr class="border-2">
+                            <div class="info-wrapper">
+                                <div class="more"><a href="@item.Url()" class="link-btn" tabindex="0">Details <i class="ti-arrow-right"></i></a></div>
+                                <div class="butn-dark"> <a href="@bookLink?.Url" data-scroll-nav="1"><span style="color: #fff;">Book Now</span></a> </div>
+                            </div>
+                        </div>
+                    </div>
+                    counter++;
+                }
+            </div>
+        </div>
+    </div>
+</section>
