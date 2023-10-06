@@ -6205,6 +6205,9 @@ select {
         grid-template-columns: repeat(1, 1fr) !important;
         grid-row-gap: 1rem !important;
     }
+    .room-facilities-2 {
+        grid-template-columns: repeat(1, 1fr) !important;
+    }
 }
 
 
@@ -6234,6 +6237,31 @@ select {
     margin-bottom: 0 !important;
     line-height: 1 !important;
 }
+
+.room-facilities-2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+
+.room-facilities-2 .room-properties {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+    .room-facilities-2 .room-properties i {
+        margin-right: 10px;
+        color: #aa8453;
+        font-size: 20px;
+    }
+
+    .room-facilities-2 .room-properties p {
+        font-size: 15px;
+        margin-bottom: 0 !important;
+        line-height: 1 !important;
+    }
 
 .menu-grid-layout {
     display: grid;
