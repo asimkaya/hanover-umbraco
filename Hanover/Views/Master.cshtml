@@ -18,17 +18,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <title>@root.Value("browserHeader")</title>
     <meta name="title" content="@Model.Value("metaHeader")">
-    <meta name="description" content="@Model.Value("metaDescription")">
+    @* <meta name="description" content="@Model.Value("metaDescription")"> *@
     <meta name="keywords" content="@Model.Value("metaTags")">
     <link rel="shortcut icon" href="@favicon?.MediaUrl()" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
     <link rel="stylesheet" href="~/css/plugin.css" />
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
+    <render-script position="HeadBottom"></render-script>
+    <meta-fields></meta-fields>
 
 </head>
 
 <body>
+    <render-script position="BodyTop"></render-script>
     <!-- Preloader -->
     <div class="preloader-bg"></div>
     <div id="preloader">
@@ -164,6 +167,7 @@
     <script src="~/scripts/datepicker.js"></script>
     <script src="~/scripts/smooth-scroll.min.js"></script>
     <script src="~/scripts/custom.js" asp-append-version="true"></script>
+    <render-script position="BodyBottom"></render-script>
 </body>
 
 </html>
