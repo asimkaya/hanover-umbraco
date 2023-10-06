@@ -63,7 +63,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("roomDescription")]
-		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString RoomDescription => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "roomDescription");
+		public virtual string RoomDescription => this.Value<string>(_publishedValueFallback, "roomDescription");
 
 		///<summary>
 		/// Content
