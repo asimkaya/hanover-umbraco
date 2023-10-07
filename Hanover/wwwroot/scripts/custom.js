@@ -595,15 +595,16 @@ function fail_func(data) {
         message.fadeOut();
     }, 2000);
 }
-form.submit(function (e) {
-    e.preventDefault();
-    form_data = $(this).serialize();
-    $.ajax({
-        type: 'POST',
-        url: form.attr('action'),
-        data: form_data
-    }).done(done_func).fail(fail_func);
-});
+//form.submit(function (e) {
+//    e.preventDefault();
+//    form_data = $(this).serialize();
+//    $.ajax({
+//        type: 'POST',
+//        url: window.location.href,
+//        data: form_data
+//    }).done(done_func).fail(fail_func);
+//    console.log(form_data);
+//});
 
 // Slider Grid Background
 (function () {

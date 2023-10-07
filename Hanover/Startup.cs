@@ -1,3 +1,6 @@
+using Hanover.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace Hanover
 {
     public class Startup
@@ -35,6 +38,8 @@ namespace Hanover
                 .AddDeliveryApi()
                 .AddComposers()
                 .Build();
+
+            services.AddDbContext<DataContext>(options => { options.UseSqlServer(_config.GetConnectionString("umbracoDbDSN"), x => x.EnableRetryOnFailure()); });
         }
 
         /// <summary>

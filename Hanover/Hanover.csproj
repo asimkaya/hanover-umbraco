@@ -4,6 +4,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="App_Plugins\ContactDashboard\ContactDashboard.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Plugins\ContactDashboard\Contact.html" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="SeoToolkit.Umbraco" Version="3.3.0" />
