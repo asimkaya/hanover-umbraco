@@ -5,10 +5,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="App_Plugins\ContactDashboard\ContactController.cs" />
     <Compile Include="App_Plugins\ContactDashboard\ContactDashboard.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Plugins\ContactDashboard\Contact.html" />
+    <Content Include="App_Plugins\ContactDashboard\lang\en-US.xml" />
   </ItemGroup>
 
   <ItemGroup>

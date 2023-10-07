@@ -1,4 +1,5 @@
 using Hanover.Data;
+using Hanover.UmbracoEndpointBuilders;
 using Microsoft.EntityFrameworkCore;
 
 namespace Hanover
@@ -65,6 +66,7 @@ namespace Hanover
                     u.UseInstallerEndpoints();
                     u.UseBackOfficeEndpoints();
                     u.UseWebsiteEndpoints();
+                    u.UseCustomRouting();
                 });
         }
     }
