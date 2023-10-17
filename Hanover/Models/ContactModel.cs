@@ -20,7 +20,7 @@ namespace Hanover.Models
         [Required]
         public string Message { get; set; }
 
-        public DateTime CreateDate { get; set; }
+        public Nullable<DateTime> CreateDate { get; set; }
 
     }
 }

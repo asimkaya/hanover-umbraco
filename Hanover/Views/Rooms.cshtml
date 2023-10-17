@@ -7,6 +7,7 @@
     Layout = "Master.cshtml";
     var root = Model.Root();
     var pageHeaderImage = Model.Value<MediaWithCrops>("pageImage");
+    var pageMobileImage = Model.Value<MediaWithCrops>("pageMobileImage");
     int counter = 2;
     var rooms = Umbraco.Content(Guid.Parse("bdd98559-1763-4a3a-81d3-22d09bbb9da8"))
     .Children()
@@ -14,8 +15,19 @@
 }
 
 <!-- Header Banner -->
-<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
+<div class="banner-header banner-desktop-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
     data-background="@pageHeaderImage.MediaUrl()">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 caption mt-90">
+                <h5>@Model.Value("pageAltName")</h5>
+                <h1>@Model.Value("pageName")</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="banner-header banner-mobile-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
+    data-background="@pageMobileImage.MediaUrl()">
     <div class="container">
         <div class="row">
             <div class="col-md-12 caption mt-90">
@@ -60,7 +72,7 @@
                             <div class="info-wrapper">
                                 <div class="more"><a href="@item.Url()" class="link-btn" tabindex="0">Details <i
                                             class="ti-arrow-right"></i></a></div>
-                                <div class="butn-dark"> <a href="@bookLink?.Url" data-scroll-nav="1"><span
+                                <div class="butn-dark"> <a href="@bookLink?.Url" target="@bookLink?.Target"><span
                                             style="color: #fff;">Book Now</span></a> </div>
                             </div>
                         </div>

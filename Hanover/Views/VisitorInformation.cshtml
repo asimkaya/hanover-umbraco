@@ -7,13 +7,31 @@
     Layout = "Master.cshtml";
     var root = Model.Root();
     var pageHeaderImage = Model.Value<MediaWithCrops>("pageImage");
+    var pageMobileImage = Model.Value<MediaWithCrops>("pageMobileImage");
     var visitorServiceItem = Model.Value<IEnumerable<BlockListItem>>("visitorServiceItem");
     int counter = 0;
 }
 
+<style>
+    .banner-header {
+        height: 60vh !important;
+    }
+</style>
+
 <!-- Header Banner -->
-<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
+<div class="banner-header banner-desktop-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
     data-background="@pageHeaderImage.MediaUrl()">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 caption mt-90">
+                <h5>@Model.Value("pageAltName")</h5>
+                <h1>@Model.Value("pageName")</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="banner-header banner-mobile-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
+    data-background="@pageMobileImage.MediaUrl()">
     <div class="container">
         <div class="row">
             <div class="col-md-12 caption mt-90">
@@ -29,6 +47,7 @@
         @foreach (var item in visitorServiceItem)
         {
             var itemImage = item.Content.Value<MediaWithCrops>("visitorImage");
+            var itemLink = item.Content.Value<Link>("visitorLink");
             if ((counter % 2) == 0)
             {
                 <div class="row">
@@ -45,6 +64,9 @@
                                 </div>
                                 <h4>@item.Content.Value("visitorTitle")</h4>
                                 <p>@item.Content.Value("visitorContent")</p>
+                                @if(itemLink != null) {
+                                    <div class="butn-dark"> <a href="@itemLink.Url" target="@itemLink.Target"><span style="color: #fff;">@itemLink.Name</span></a> </div>
+                                }
                             </div>
                         </div>
                     </div>
@@ -61,7 +83,9 @@
                                 </div>
                                 <h4>@item.Content.Value("visitorTitle")</h4>
                                 <p>@item.Content.Value("visitorContent")</p>
-
+                                @if(itemLink != null) {
+                                    <div class="butn-dark"> <a href="@itemLink.Url" target="@itemLink.Target"><span style="color: #fff;">@itemLink.Name</span></a> </div>
+                                }
                             </div>
                         </div>
                     </div>
