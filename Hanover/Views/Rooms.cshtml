@@ -10,12 +10,12 @@
     int counter = 2;
     var rooms = Umbraco.Content(Guid.Parse("bdd98559-1763-4a3a-81d3-22d09bbb9da8"))
     .Children()
-    .Where(x => x.IsVisible())
-    .OrderByDescending(x => x.CreateDate);
+    .Where(x => x.IsVisible());
 }
 
 <!-- Header Banner -->
-<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="@pageHeaderImage.MediaUrl()">
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
+    data-background="@pageHeaderImage.MediaUrl()">
     <div class="container">
         <div class="row">
             <div class="col-md-12 caption mt-90">
@@ -40,8 +40,11 @@
                     <div class="@classNames" data-animate-effect="fadeInUp">
                         <figure><img src="@roomImage.MediaUrl()" alt="Hanover Room Image" class="img-fluid"></figure>
                         <div class="caption">
-                            <h3>@item.Value("roomPrice") <span>/ Night</span></h3>
-                            <h4><a href="room-details.html">@item.Value("roomDetailTitle")</a></h4>
+
+                            @*<h3>@item.Value("roomPrice") <span>/ Night</span></h3>*@
+
+
+                            <h4><a href="@item.Url()">@item.Value("roomDetailTitle")</a></h4>
                             <p>@item.Value("roomShortDescription")</p>
                             <div class="room-facilities room-facilities-2 mb-30">
                                 @foreach (var property in roomProperties.Take(6))
@@ -55,8 +58,10 @@
                             </div>
                             <hr class="border-2">
                             <div class="info-wrapper">
-                                <div class="more"><a href="@item.Url()" class="link-btn" tabindex="0">Details <i class="ti-arrow-right"></i></a></div>
-                                <div class="butn-dark"> <a href="@bookLink?.Url" data-scroll-nav="1"><span style="color: #fff;">Book Now</span></a> </div>
+                                <div class="more"><a href="@item.Url()" class="link-btn" tabindex="0">Details <i
+                                            class="ti-arrow-right"></i></a></div>
+                                <div class="butn-dark"> <a href="@bookLink?.Url" data-scroll-nav="1"><span
+                                            style="color: #fff;">Book Now</span></a> </div>
                             </div>
                         </div>
                     </div>

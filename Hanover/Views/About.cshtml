@@ -7,6 +7,7 @@
     Layout = "Master.cshtml";
     var root = Model.Root();
     var pageHeaderImage = Model.Value<MediaWithCrops>("pageImage");
+    var pageMobileImage = Model.Value<MediaWithCrops>("pageMobileImage");
     var experienceImage1 = Model.Value<MediaWithCrops>("aboutExperienceImage1");
     var experienceImage2 = Model.Value<MediaWithCrops>("aboutExperienceImage2");
     var homeServices = root.Value<IEnumerable<BlockListItem>>("homeServicesArea");
@@ -14,7 +15,8 @@
 
 
 <!-- Header Banner -->
-<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="@pageHeaderImage.MediaUrl()">
+<div class="banner-header banner-desktop-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
+    data-background="@pageHeaderImage.MediaUrl()">
     <div class="container">
         <div class="row">
             <div class="col-md-12 caption mt-90">
@@ -24,18 +26,24 @@
         </div>
     </div>
 </div>
+<div class="banner-header banner-mobile-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
+    data-background="@pageHeaderImage.MediaUrl()">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 caption mt-90">
+                <h5>@Model.Value("pageAltName")</h5>
+                <h1>@Model.Value("pageName")</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- About -->
 <section class="about section-padding">
     <div class="container">
         <div class="row">
             <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
-                <span>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                </span>
+
                 <div class="section-subtitle">@Model.Value("aboutExperienceSubtitle")</div>
                 <div class="section-title">@Model.Value("aboutExperienceTitle")</div>
                 <p> @Model.Value("aboutExperienceContent")</p>
@@ -43,7 +51,8 @@
                 <div class="reservations">
                     <div class="icon"><span class="flaticon-call"></span></div>
                     <div class="text">
-                        <p>Reservation</p> <a href="tel:@Model.Value("aboutExperiencePhoneNumber")">@Model.Value("aboutExperiencePhoneNumber")</a>
+                        <p>Reservation</p> <a
+                            href="tel:@Model.Value("aboutExperiencePhoneNumber")">@Model.Value("aboutExperiencePhoneNumber")</a>
                     </div>
                 </div>
             </div>
@@ -59,7 +68,7 @@
 </section>
 
 <!-- Facilties -->
-<section class="facilties section-padding">
+<section class="facilties section-padding2">
     <div class="container">
         <div class="row">
             <div class="col-md-12">

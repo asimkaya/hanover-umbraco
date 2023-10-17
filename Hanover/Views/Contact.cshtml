@@ -9,7 +9,8 @@
 
 
 <!-- Header Banner -->
-<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="3" data-background="@pageHeaderImage.MediaUrl()">
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="3"
+    data-background="@pageHeaderImage.MediaUrl()">
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-left caption mt-90">
@@ -29,13 +30,15 @@
                 <div class="reservations mb-30">
                     <div class="icon"><span class="flaticon-call"></span></div>
                     <div class="text">
-                        <p>@Model.Value("contactPhoneNumberTitle")</p> <a href="tel:@Model.Value("contactPhoneNumber")">@Model.Value("contactPhoneNumber")</a>
+                        <p>@Model.Value("contactPhoneNumberTitle")</p> <a
+                            href="tel:@Model.Value("contactPhoneNumber")">@Model.Value("contactPhoneNumber")</a>
                     </div>
                 </div>
                 <div class="reservations mb-30">
                     <div class="icon"><span class="flaticon-envelope"></span></div>
                     <div class="text">
-                        <p>@Model.Value("contactEmailTitle")</p> <a href="mailto:@Model.Value("contactEmail")">@Model.Value("contactEmail")</a>
+                        <p>@Model.Value("contactEmailTitle")</p> <a
+                            href="mailto:@Model.Value("contactEmail")">@Model.Value("contactEmail")</a>
                     </div>
                 </div>
                 <div class="reservations">
@@ -47,13 +50,15 @@
             </div>
             <div class="col-md-5 mb-30 offset-md-1">
                 <h3>Get in touch</h3>
-                @using (Html.BeginUmbracoForm("Submit", "Contact", FormMethod.Post, new Dictionary<string, object> { { "class", "contact__form" } }))
+                @using (Html.BeginUmbracoForm("Submit", "Contact", FormMethod.Post, new Dictionary<string, object> { {
+                "class", "contact__form" } }))
                 {
                     <div class="row">
                         <div class="col-12">
                             @if (TempData["ContactSuccess"] != null && (bool)TempData["ContactSuccess"])
                             {
-                                <div class="alert alert-success contact__msg" role="alert"> Your message was sent successfully. </div>
+                                <div class="alert alert-success contact__msg" role="alert"> Your message was sent successfully.
+                                </div>
                             }
                         </div>
                     </div>
@@ -69,7 +74,8 @@
                             <input name="phone" type="text" placeholder="Your Number *">
                         </div>
                         <div class="col-md-12 form-group">
-                            <textarea name="message" id="message" cols="30" rows="4" placeholder="Message *" required></textarea>
+                            <textarea name="message" id="message" cols="30" rows="4" placeholder="Message *"
+                                required></textarea>
                         </div>
                         <div class="col-md-12">
                             <button type="submit" class="butn-dark2"><span>Send Message</span></button>
@@ -82,7 +88,8 @@
         <!-- Map Section -->
         <div class="row">
             <div class="col-md-12 map animate-box" data-animate-effect="fadeInUp" style="filter: grayscale(0); ">
-                <iframe src="@Model.Value("contactEmbedLink")" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="@Model.Value("contactEmbedLink")" width="100%" height="600" style="border:0;"
+                    allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </div>

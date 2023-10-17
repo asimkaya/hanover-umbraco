@@ -32,13 +32,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-left">
-                <span>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                </span>
+
                 <div class="section-subtitle">@Model.Value("cafeSubtitle")</div>
                 <div class="section-title">@Model.Value("cafeTitle")</div>
             </div>
@@ -86,7 +80,8 @@
                                     @foreach (var menuItem in menuItems)
                                     {
                                         <div class="menu-info">
-                                            <h5>@menuItem.Content.Value("menuItemTitle") <span class="price">@menuItem.Content.Value("menuItemPrice")</span></h5>
+                                            <h5>@menuItem.Content.Value("menuItemTitle") <span
+                                                    class="price">@menuItem.Content.Value("menuItemPrice")</span></h5>
                                             <p>@menuItem.Content.Value("menuItemContent")</p>
                                         </div>
                                     }
@@ -103,6 +98,7 @@
 </section>
 <!-- Testiominals -->
 <section class="testimonials">
-    <div class="background bg-img bg-fixed section-padding pb-0" data-background="@cafeBottomImage.MediaUrl()" data-overlay-dark="3" style="height: 600px;">
+    <div class="background bg-img bg-fixed section-padding pb-0" data-background="@cafeBottomImage.MediaUrl()"
+        data-overlay-dark="3" style="height: 600px;">
     </div>
 </section>

@@ -652,3 +652,5 @@ $('.slider-grid-bg .owl-carousel').owlCarousel({
         }
     }
 });
+
+var bannerHeader = document.getElementsByClassName("banner-header");

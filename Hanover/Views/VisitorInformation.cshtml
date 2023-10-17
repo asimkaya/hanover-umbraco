@@ -12,7 +12,8 @@
 }
 
 <!-- Header Banner -->
-<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4" data-background="@pageHeaderImage.MediaUrl()">
+<div class="banner-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
+    data-background="@pageHeaderImage.MediaUrl()">
     <div class="container">
         <div class="row">
             <div class="col-md-12 caption mt-90">
@@ -28,7 +29,7 @@
         @foreach (var item in visitorServiceItem)
         {
             var itemImage = item.Content.Value<MediaWithCrops>("visitorImage");
-            if((counter % 2) == 0)
+            if ((counter % 2) == 0)
             {
                 <div class="row">
                     <div class="col-md-6 p-0 animate-box" data-animate-effect="fadeInLeft">

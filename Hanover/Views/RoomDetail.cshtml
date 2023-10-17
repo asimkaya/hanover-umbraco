@@ -30,28 +30,23 @@
         <!-- project content -->
         <div class="row">
             <div class="col-md-12">
-                <span>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                </span>
+
                 <div class="section-subtitle">@Model.Value("roomDetailSubtitle")</div>
                 <div class="section-title">@Model.Value("roomDetailSubtitle")</div>
             </div>
             <div class="col-md-8">
-                <p class="mb-30">@Model.Value("roomDescription"))</p>
+                <p class="mb-30">@Model.Value("roomDescription")</p>
                 @Html.Raw(Model.Value("roomDetailContent"))
             </div>
             <div class="col-md-3 offset-md-1">
-                <h6>@Model.Value("roomPropertyTitle"))</h6>
+                <h6>@Model.Value("roomPropertyTitle")</h6>
                 <ul class="list-unstyled page-list mb-30">
                     @foreach (var item in roomPropertyContent)
                     {
 
                         <li>
-                            <div class="page-list-icon"> <span class="@item.Content.Value("roomPropertyIcon")"></span> </div>
+                            <div class="page-list-icon"> <span class="@item.Content.Value("roomPropertyIcon")"></span>
+                            </div>
                             <div class="page-list-text">
                                 <p>@item.Content.Value("roomPropertyName")</p>
                             </div>

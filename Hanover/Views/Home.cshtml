@@ -29,18 +29,13 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-10 offset-md-1">
-                                <span>
-                                    <i class="star-rating"></i>
-                                    <i class="star-rating"></i>
-                                    <i class="star-rating"></i>
-                                    <i class="star-rating"></i>
-                                    <i class="star-rating"></i>
-                                </span>
+
                                 <h4>@item.Content.Value("homeSliderSubtitle")</h4>
                                 <h1>@item.Content.Value("homeSliderTitle")</h1>
                                 @if (homeSliderLink != null)
                                 {
-                                    <div class="butn-light mt-30 mb-30"> <a href="@homeSliderLink.Url" target="@homeSliderLink.Target" data-scroll-nav="1"><span>Rooms & Suites</span></a> </div>
+                                    <div class="butn-light mt-30 mb-30"> <a href="@homeSliderLink.Url"
+                                            target="@homeSliderLink.Target" data-scroll-nav="1"><span>Book Now</span></a> </div>
                                 }
                             </div>
                         </div>
@@ -70,13 +65,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 mb-30 animate-box" data-animate-effect="fadeInUp">
-                <span>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                    <i class="star-rating"></i>
-                </span>
+
                 <div class="section-subtitle">@Model.Value("homeExperienceSubtitle")</div>
                 <div class="section-title">@Model.Value("homeExperienceTitle")</div>
                 <p> @Model.Value("homeExperienceContent")</p>
@@ -84,7 +73,8 @@
                 <div class="reservations">
                     <div class="icon"><span class="flaticon-call"></span></div>
                     <div class="text">
-                        <p>Reservation</p> <a href="tel:@Model.Value("homeExperiencePhoneNumber")">@Model.Value("homeExperiencePhoneNumber")</a>
+                        <p>Reservation</p> <a
+                            href="tel:@Model.Value("homeExperiencePhoneNumber")">@Model.Value("homeExperiencePhoneNumber")</a>
                     </div>
                 </div>
             </div>
@@ -100,7 +90,7 @@
 </section>
 <!-- Rooms -->
 
-<div class="rooms3 section-padding">
+<div class="rooms3">
     <div class="container">
         <div class="row">
             @foreach (var item in rooms)
@@ -114,7 +104,7 @@
                             <span class="category"><a href="@item.Url()">Book</a></span>
                             <div class="square-container d-flex align-items-end justify-content-end">
                                 <div class="box-title">
-                                    <h6>@item.Value("roomPrice") / Night</h6>
+                                    @*<h6>@item.Value("roomPrice") / Night</h6>*@
                                     <h4>@item.Value("roomDetailTitle")</h4>
                                 </div>
                             </div>
@@ -122,7 +112,7 @@
                         </div>
                         <div class="square2">
                             <div class="square-container2">
-                                <h6>@item.Value("roomPrice") / Night</h6>
+                                @*<h6>@item.Value("roomPrice") / Night</h6>*@
                                 <h4>@item.Value("roomDetailTitle")</h4>
                                 <p>@item.Value("roomShortDescription")</p>
                                 <div class="room-facilities room-facilities-1 mb-30">
@@ -172,7 +162,3 @@
         </div>
     </div>
 </section>
-
-
-
-

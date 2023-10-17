@@ -858,6 +858,14 @@ blockquote cite:before {
     .rooms1 .owl-theme .owl-nav {
         display: none;
     }
+
+    .section-padding {
+        padding: 60px 0 !important;
+    }
+
+    .section-padding2 {
+        padding: 0 0 60px 0 !important;
+    }
 }
 
 
@@ -1005,9 +1013,6 @@ blockquote cite:before {
     color: #fff;
 }
 
-.nav-scroll .logo-img {
-    width: 160px;
-}
 
 .nav-scroll .logo-img {
     margin-bottom: 0px;
@@ -1086,8 +1091,7 @@ blockquote cite:before {
 }
 
 .logo-img {
-    padding: 20px 0;
-    width: 160px;
+    width: 60px;
     text-align: center;
 }
 
@@ -1204,17 +1208,12 @@ blockquote cite:before {
 
     .logo-wrapper {
         float: left;
-        padding: 26px 0 26px 15px;
     }
 
     .nav-scroll .logo-wrapper {
-        padding: 26px 0 26px 15px;
         background-color: transparent;
     }
 
-    .nav-scroll .logo-img {
-        width: 160px;
-    }
 
     .navbar .logo {
         text-align: left;
@@ -1225,7 +1224,6 @@ blockquote cite:before {
 
     .logo-img {
         margin-bottom: 0px;
-        width: 160px;
         padding: 0;
     }
 
@@ -2145,7 +2143,7 @@ hr {
 
 /* ======= Page Banner Header style ======= */
 .banner-header {
-    height: 60vh;
+    height: 100vh;
 }
 
 .banner-header.full-height {
@@ -6201,12 +6199,22 @@ select {
     .video-fullscreen-wrap .caption {
         text-align: center;
     }
+
     .menu-grid-layout {
         grid-template-columns: repeat(1, 1fr) !important;
         grid-row-gap: 1rem !important;
     }
+
     .room-facilities-2 {
         grid-template-columns: repeat(1, 1fr) !important;
+    }
+
+    .banner-mobile-header {
+        display: block !important;
+    }
+
+    .banner-desktop-header {
+        display: none !important;
     }
 }
 
@@ -6251,21 +6259,25 @@ select {
     align-items: center;
 }
 
-    .room-facilities-2 .room-properties i {
-        margin-right: 10px;
-        color: #aa8453;
-        font-size: 20px;
-    }
+.room-facilities-2 .room-properties i {
+    margin-right: 10px;
+    color: #aa8453;
+    font-size: 20px;
+}
 
-    .room-facilities-2 .room-properties p {
-        font-size: 15px;
-        margin-bottom: 0 !important;
-        line-height: 1 !important;
-    }
+.room-facilities-2 .room-properties p {
+    font-size: 15px;
+    margin-bottom: 0 !important;
+    line-height: 1 !important;
+}
 
 .menu-grid-layout {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 7rem;
     grid-row-gap: 2rem;
+}
+
+.banner-mobile-header {
+    display: none;
 }
