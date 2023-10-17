@@ -32,6 +32,7 @@ namespace Hanover.Controllers
             }
             Guid guid = Guid.NewGuid();
             model.Id = guid;
+            model.CreateDate = DateTime.Now;
 
             _dataContext.ContactModel.Add(model);
             _dataContext.SaveChanges();
