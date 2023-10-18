@@ -18,7 +18,7 @@ namespace Hanover.App_Plugins.ContactDashboard
         }
         public IActionResult Index()
         {
-            IEnumerable<ContactModel> contacts = _dataContext.ContactModel.AsQueryable().ToList();
+            IEnumerable<ContactModel> contacts = _dataContext.ContactModel.AsQueryable().OrderByDescending(x => x.CreateDate).ToList();
             return View(contacts);
         }
     }

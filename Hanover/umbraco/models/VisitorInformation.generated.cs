@@ -74,6 +74,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops PageImage => global::Umbraco.Cms.Web.Common.PublishedModels.PageHeader.GetPageImage(this, _publishedValueFallback);
 
 		///<summary>
+		/// Page Mobile Image
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("pageMobileImage")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops PageMobileImage => global::Umbraco.Cms.Web.Common.PublishedModels.PageHeader.GetPageMobileImage(this, _publishedValueFallback);
+
+		///<summary>
 		/// Page Name
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.2.0+173d8dc")]
