@@ -23,8 +23,9 @@
         @foreach (var item in homeSlider)
         {
             var homeSliderImage = item.Content.Value<MediaWithCrops>("homeSliderImage");
+            var homeSliderMobileImage = item.Content.Value<MediaWithCrops>("homeSliderMobileImage");
             var homeSliderLink = item.Content.Value<Link>("homeSliderLink");
-            <div class="text-center item bg-img" data-overlay-dark="2" data-background="@homeSliderImage.MediaUrl()">
+            <div class="text-center item bg-img" data-overlay-dark="2" data-background="@homeSliderImage.MediaUrl()" data-background-mobile="@((homeSliderMobileImage != null) ? homeSliderMobileImage.MediaUrl() : homeSliderImage.MediaUrl())">
                 <div class="v-middle caption">
                     <div class="container">
                         <div class="row">

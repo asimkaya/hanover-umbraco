@@ -68,12 +68,32 @@ $(function () {
 
 
     // Sections background image from data background
-    var pageSection = $(".bg-img, section");
-    pageSection.each(function (indx) {
-        if ($(this).attr("data-background")) {
-            $(this).css("background-image", "url(" + $(this).data("background") + ")");
+
+
+    const homeSliderwindowWidth = () => {
+        if ($(window).width() < 700) {
+            var pageSection = $(".bg-img, section");
+            pageSection.each(function (indx) {
+                if ($(this).attr("data-background-mobile")) {
+                    $(this).css("background-image", "url(" + $(this).attr("data-background-mobile") + ")");
+                } else {
+                    $(this).css("background-image", "url(" + $(this).attr("data-background") + ")");
+                }
+            });
         }
-    });
+        else {
+            var pageSection = $(".bg-img, section");
+            pageSection.each(function (indx) {
+                if ($(this).attr("data-background")) {
+                    $(this).css("background-image", "url(" + $(this).data("background") + ")");
+                }
+            });
+        }
+
+
+
+    }
+
 
 
     // Animations
@@ -108,6 +128,7 @@ $(function () {
     };
     $(function () {
         contentWayPoint();
+        homeSliderwindowWidth();
     });
 
 
