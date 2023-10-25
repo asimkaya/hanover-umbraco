@@ -6,14 +6,25 @@
 @{
     Layout = "Master.cshtml";
     var sliderImages = Model.Value<IEnumerable<BlockListItem>>("sliderImage");
-    var cafeBottomImage = Model.Value<MediaWithCrops>("cafeBottomImage");
+    var sliderMobileImages = Model.Value<IEnumerable<BlockListItem>>("mobileSliderImage");
+    // var cafeBottomImage = Model.Value<MediaWithCrops>("cafeBottomImage");
     var cafeMenu = Model.Value<IEnumerable<BlockListItem>>("cafeMenu");
+    var cafeBottomImage = Model.Value<BlockGridModel>("cafeBottomImage");
     int counterMenuCategory = 1;
     int counterMenuItems = 1;
 }
+<style>
+    .banner-mobile-header.slider .owl-item {
+        height: 60vh !important;
+        position: relative;
+    }
 
-<!-- Restaurant Slider -->
-<header class="header slider">
+    .banner-mobile-header {
+        min-height: unset !important;
+    }
+</style>
+<!-- Restaurant Slider Desktop-->
+<header class="header slider banner-desktop-header">
     <div class="owl-carousel owl-theme">
         <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
         @foreach (var item in sliderImages)
@@ -27,83 +38,115 @@
         <a href="#" data-scroll-nav="1" class=""> <i class="ti-arrow-down"></i> </a>
     </div>
 </header>
-<!-- Restaurant Content -->
-<section class="rooms-page section-padding" data-scroll-index="1">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-left">
 
-                <div class="section-subtitle">@Model.Value("cafeSubtitle")</div>
-                <div class="section-title">@Model.Value("cafeTitle")</div>
-            </div>
-            <div class="col-md-12">
-                <p class="mb-30">@Model.Value("cafeContent")</p>
-                <h6>@Model.Value("cafeHoursTitle")</h6>
-                @Html.Raw(Model.Value("cafeHoursContent"))
-            </div>
-        </div>
+
+<!-- Restaurant Slider Mobile-->
+<header class="header slider banner-mobile-header">
+    <div class="owl-carousel owl-theme">
+        <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
+        @foreach (var item in sliderMobileImages)
+        {
+            var itemImage = item.Content.Value<MediaWithCrops>("pageMobileSliderImage");
+            <div class="text-center item bg-img" data-overlay-dark="3" data-background="@itemImage.MediaUrl()"></div>
+        }
     </div>
-</section>
-<!-- Restaurant Menu -->
-<section id="menu" class="restaurant-menu menu section-padding bg-blck">
-    <div class="container">
-        <div class="row" data-scroll-index="2">
-            <div class="col-md-12 text-center">
-                <div class="section-subtitle"><span>@Model.Value("cafeMenuSubtitle")</span></div>
-                <div class="section-title"><span>@Model.Value("cafeMenuTitle")</span></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="tabs-icon col-md-10 offset-md-1 text-center">
-                        <div class="owl-carousel owl-theme">
-                            @foreach (var item in cafeMenu)
-                            {
-                                var classStatment = (counterMenuCategory == 1) ? "item active" : "item";
-                                <div id="tab-@counterMenuCategory" class="@classStatment">
-                                    <h6>@item.Content.Value("menuCategoryName")</h6>
-                                </div>
-                                counterMenuCategory++;
-                            }
+    <!-- arrow down -->
+    <div class="arrow bounce text-center" style="bottom: 21.2rem;">
+        <a href="#" data-scroll-nav="1" class=""> <i class="ti-arrow-down"></i> </a>
+    </div>
+</header>
 
-                        </div>
-                    </div>
-                    <div class="restaurant-menu-content col-md-12">
+<div class="cafe-bistro-flex">
+    <!-- Restaurant Content -->
+    <section class="rooms-page section-padding" data-scroll-index="1">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-left">
 
-                        @foreach (var item in cafeMenu)
-                        {
-                            var menuItemClass = (counterMenuItems == 1) ? "cont active" : "cont";
-                            var menuItems = item.Content.Value<IEnumerable<BlockListItem>>("menuAllItems");
-                            <div id="tab-@counterMenuItems-content" class="@menuItemClass">
-                                <div class="menu-grid-layout">
-                                    @foreach (var menuItem in menuItems)
-                                    {
-                                        <div class="menu-info">
-                                            <h5>@menuItem.Content.Value("menuItemTitle") <span
-                                                    class="price">@menuItem.Content.Value("menuItemPrice")</span></h5>
-                                            <p>@menuItem.Content.Value("menuItemContent")</p>
-                                        </div>
-                                    }
-
-                                </div>
-                            </div>
-                            counterMenuItems++;
-                        }
-                    </div>
+                    <div class="section-subtitle">@Model.Value("cafeSubtitle")</div>
+                    <div class="section-title">@Model.Value("cafeTitle")</div>
+                </div>
+                <div class="col-md-12">
+                    <p class="mb-30 text-sm-justify-custom">@Model.Value("cafeContent")</p>
+                    <h6>@Model.Value("cafeHoursTitle")</h6>
+                    @Html.Raw(Model.Value("cafeHoursContent"))
                 </div>
             </div>
         </div>
-        <div class="row up-to-menu">
-            <div class="arrow bounce text-center">
-                <a href="#" data-scroll-nav="2"> <i class="ti-arrow-up"></i> </a>
+    </section>
+
+    <!-- Restaurant Menu -->
+    <section id="menu" class="restaurant-menu menu section-padding bg-blck">
+        <div class="container">
+            <div class="row" data-scroll-index="2">
+                <div class="col-md-12 text-center">
+                    <div class="section-subtitle"><span>@Model.Value("cafeMenuSubtitle")</span></div>
+                    <div class="section-title"><span>@Model.Value("cafeMenuTitle")</span></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="tabs-icon col-md-10 offset-md-1 text-center">
+                            <div class="owl-carousel owl-theme">
+                                @foreach (var item in cafeMenu)
+                                {
+                                    var classStatment = (counterMenuCategory == 1) ? "item active" : "item";
+                                    <div id="tab-@counterMenuCategory" class="@classStatment">
+                                        <h6>@item.Content.Value("menuCategoryName")</h6>
+                                    </div>
+                                    counterMenuCategory++;
+                                }
+
+                            </div>
+                        </div>
+                        <div class="restaurant-menu-content col-md-12">
+
+                            @foreach (var item in cafeMenu)
+                            {
+                                var menuItemClass = (counterMenuItems == 1) ? "cont active" : "cont";
+                                var menuItems = item.Content.Value<IEnumerable<BlockListItem>>("menuAllItems");
+                                <div id="tab-@counterMenuItems-content" class="@menuItemClass">
+                                    <div class="menu-grid-layout">
+                                        @foreach (var menuItem in menuItems)
+                                        {
+                                            <div class="menu-info">
+                                                <h5>
+                                                    @menuItem.Content.Value("menuItemTitle") <span class="price">@menuItem.Content.Value("menuItemPrice")</span>
+                                                </h5>
+                                                <p>@menuItem.Content.Value("menuItemContent")</p>
+                                            </div>
+                                        }
+
+                                    </div>
+                                </div>
+                                counterMenuItems++;
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row up-to-menu">
+                <div class="arrow bounce text-center">
+                    <a href="#" data-scroll-nav="2"> <i class="ti-arrow-up"></i> </a>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>
 <!-- Testiominals -->
 <section class="testimonials">
-    <div class="background bg-img bg-fixed section-padding pb-0" data-background="@cafeBottomImage.MediaUrl()"
-        data-overlay-dark="3" style="height: 600px;">
-    </div>
+    @foreach (var item in cafeBottomImage)
+    {
+        var desktopImage = item.Content.Value<MediaWithCrops>("desktopImage");
+        var mobileImage = item.Content.Value<MediaWithCrops>("mobileImage");
+
+        <div class="background bg-img bg-fixed section-padding pb-0 show-only-mobile" data-background="@desktopImage.MediaUrl()"
+             data-overlay-dark="3" style="height: 600px;">
+        </div>
+
+        <div class="background bg-img bg-fixed section-padding pb-0 show-only-desktop" data-background="@mobileImage.MediaUrl()"
+             data-overlay-dark="3" style="height: 600px;">
+        </div>
+    }
 </section>

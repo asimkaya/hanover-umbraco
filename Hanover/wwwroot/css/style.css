@@ -6189,10 +6189,10 @@ select {
 
 @media screen and (max-width: 767px) {
     .section-title {
-        font-size: 41px;
+        font-size: 38px;
     }
     .header .caption h1 {
-        font-size: 20px;
+        font-size: 18px;
         margin-bottom: 15px;
         letter-spacing: 10px;
         line-height: 1.35em;
@@ -6339,4 +6339,33 @@ select {
 
 .my-float {
     margin-top: 13px;
+}
+
+.cafe-bistro-flex {
+    display: flex;
+    flex-direction: column;
+}
+.show-only-mobile {
+    display: none;
+}
+
+.show-only-desktop {
+    display: block;
+}
+
+@media only screen and (max-width: 700px) {
+    .cafe-bistro-flex {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .text-sm-justify-custom {
+        text-align: justify;
+    }
+    .show-only-mobile {
+        display: block;
+    }
+
+    .show-only-desktop {
+        display: none;
+    }
 }

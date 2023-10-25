@@ -67,7 +67,7 @@
                                     <h6>@item.Content.Value("visitorSubtitle")</h6>
                                 </div>
                                 <h4>@item.Content.Value("visitorTitle")</h4>
-                                <p>@item.Content.Value("visitorContent")</p>
+                                <p class="text-sm-justify-custom">@item.Content.Value("visitorContent")</p>
                                 @if(itemLink != null) {
                                     <div class="butn-dark"> <a href="@itemLink.Url" target="@itemLink.Target"><span style="color: #fff;">@itemLink.Name</span></a> </div>
                                 }

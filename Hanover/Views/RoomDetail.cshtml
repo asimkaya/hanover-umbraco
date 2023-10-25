@@ -6,11 +6,23 @@
 @{
     Layout = "Master.cshtml";
     var sliderImages = Model.Value<IEnumerable<BlockListItem>>("roomDetailSliderItem");
+    var sliderMobileImages = Model.Value<IEnumerable<BlockListItem>>("mobileSliderImage");
     var roomPropertyContent = Model.Value<IEnumerable<BlockListItem>>("roomPropertyContent");
 }
 
+<style>
+    .banner-mobile-header.slider .owl-item {
+        height: 60vh !important;
+        position: relative;
+    }
+
+    .banner-mobile-header {
+        min-height: unset !important;
+    }
+</style>
+
 <!-- Room Page Slider -->
-<header class="header slider">
+<header class="header slider banner-desktop-header">
     <div class="owl-carousel owl-theme">
         <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
         @foreach (var item in sliderImages)
@@ -21,6 +33,22 @@
     </div>
     <!-- arrow down -->
     <div class="arrow bounce text-center">
+        <a href="#" data-scroll-nav="1" class=""> <i class="ti-arrow-down"></i> </a>
+    </div>
+</header>
+
+<!-- Restaurant Slider Mobile-->
+<header class="header slider banner-mobile-header banner-mobile-header">
+    <div class="owl-carousel owl-theme">
+        <!-- The opacity on the image is made with "data-overlay-dark="number". You can change it using the numbers 0-9. -->
+        @foreach (var item in sliderMobileImages)
+        {
+            var itemImage = item.Content.Value<MediaWithCrops>("pageMobileSliderImage");
+            <div class="text-center item bg-img" data-overlay-dark="3" data-background="@itemImage.MediaUrl()"></div>
+        }
+    </div>
+    <!-- arrow down -->
+    <div class="arrow bounce text-center" style="bottom: 21.2rem;">
         <a href="#" data-scroll-nav="1" class=""> <i class="ti-arrow-down"></i> </a>
     </div>
 </header>
@@ -35,7 +63,7 @@
                 <div class="section-title">@Model.Value("roomDetailSubtitle")</div>
             </div>
             <div class="col-md-8">
-                <p class="mb-30">@Model.Value("roomDescription")</p>
+                <p class="mb-30 text-sm-justify-custom">@Model.Value("roomDescription")</p>
                 @Html.Raw(Model.Value("roomDetailContent"))
             </div>
             <div class="col-md-3 offset-md-1">
