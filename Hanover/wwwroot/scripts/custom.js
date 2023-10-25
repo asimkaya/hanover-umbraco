@@ -343,12 +343,10 @@ $(function () {
         responsiveClass: true,
         responsive: {
             0: {
-                items: 2,
-                nav: false
+                items: 1
             },
             600: {
-                items: 3,
-                nav: false
+                items: 2
             },
             1000: {
                 items: 4
@@ -652,5 +650,3 @@ $('.slider-grid-bg .owl-carousel').owlCarousel({
         }
     }
 });
-
-var bannerHeader = document.getElementsByClassName("banner-header");

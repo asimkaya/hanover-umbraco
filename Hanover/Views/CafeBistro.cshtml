@@ -47,7 +47,7 @@
 <!-- Restaurant Menu -->
 <section id="menu" class="restaurant-menu menu section-padding bg-blck">
     <div class="container">
-        <div class="row">
+        <div class="row" data-scroll-index="2">
             <div class="col-md-12 text-center">
                 <div class="section-subtitle"><span>@Model.Value("cafeMenuSubtitle")</span></div>
                 <div class="section-title"><span>@Model.Value("cafeMenuTitle")</span></div>
@@ -92,6 +92,11 @@
                         }
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row up-to-menu">
+            <div class="arrow bounce text-center">
+                <a href="#" data-scroll-nav="2"> <i class="ti-arrow-up"></i> </a>
             </div>
         </div>
     </div>
