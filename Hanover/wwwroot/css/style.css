@@ -6352,6 +6352,9 @@ select {
 .show-only-desktop {
     display: block;
 }
+.header-top-text {
+    padding-top: 90px;
+}
 
 @media only screen and (max-width: 700px) {
     .cafe-bistro-flex {
@@ -6367,5 +6370,8 @@ select {
 
     .show-only-desktop {
         display: none;
+    }
+    .header-top-text {
+        padding-top: 370px;
     }
 }
