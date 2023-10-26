@@ -909,7 +909,7 @@ blockquote cite:before {
 }
 
 .section-title {
-    font-size: 46px;
+    font-size: 40px;
     font-family: 'Gilda Display', serif;
     font-weight: 400;
     color: #222;
@@ -6251,7 +6251,7 @@ select {
 
     .banner-mobile-header {
         display: block !important;
-        height: 60vh !important;
+        height: 50vh !important;
     }
 
     .banner-desktop-header {

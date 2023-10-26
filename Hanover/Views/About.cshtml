@@ -16,7 +16,7 @@
 
 <!-- Header Banner -->
 <div class="banner-header banner-desktop-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
-    data-background="@pageHeaderImage.MediaUrl()">
+     data-background="@pageHeaderImage.MediaUrl()">
     <div class="container">
         <div class="row">
             <div class="col-md-12 caption mt-90">
@@ -27,7 +27,7 @@
     </div>
 </div>
 <div class="banner-header banner-mobile-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
-    data-background="@pageMobileImage.MediaUrl()">
+     data-background="@pageMobileImage.MediaUrl()">
     <div class="container">
         <div class="row">
             <div class="col-md-12 caption mt-90">
@@ -51,8 +51,7 @@
                 <div class="reservations">
                     <div class="icon"><span class="flaticon-call"></span></div>
                     <div class="text">
-                        <p>Reservation</p> <a
-                            href="tel:@Model.Value("aboutExperiencePhoneNumber")">@Model.Value("aboutExperiencePhoneNumber")</a>
+                        <p>Reservation</p> <a href="tel:@Model.Value("aboutExperiencePhoneNumber")">@Model.Value("aboutExperiencePhoneNumber")</a>
                     </div>
                 </div>
             </div>
@@ -67,27 +66,31 @@
     </div>
 </section>
 
-<!-- Facilties -->
-<section class="facilties section-padding2">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="section-subtitle">@Model.Value("aboutServicesSubtitle")</div>
-                <div class="section-title">@Model.Value("aboutServicesTitle")</div>
+
+@if (homeServices.Count() != 0)
+{
+    <!-- Facilties -->
+    <section class="facilties section-padding2">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="section-subtitle">@Model.Value("aboutServicesSubtitle")</div>
+                    <div class="section-title">@Model.Value("aboutServicesTitle")</div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach (var service in homeServices)
+                {
+                    <div class="col-md-4">
+                        <div class="single-facility animate-box" data-animate-effect="fadeInUp">
+                            <span class="@service.Content.Value("homeServiceIcon")"></span>
+                            <h5>@service.Content.Value("homeServiceHeader")</h5>
+                            <p>@service.Content.Value("homeServiceContent")</p>
+                            <div class="facility-shape"> <span class="@service.Content.Value("homeServiceIcon")"></span> </div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
-        <div class="row">
-            @foreach (var service in homeServices)
-            {
-                <div class="col-md-4">
-                    <div class="single-facility animate-box" data-animate-effect="fadeInUp">
-                        <span class="@service.Content.Value("homeServiceIcon")"></span>
-                        <h5>@service.Content.Value("homeServiceHeader")</h5>
-                        <p>@service.Content.Value("homeServiceContent")</p>
-                        <div class="facility-shape"> <span class="@service.Content.Value("homeServiceIcon")"></span> </div>
-                    </div>
-                </div>
-            }
-        </div>
-    </div>
-</section>
+    </section>
+}

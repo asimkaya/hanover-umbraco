@@ -118,8 +118,9 @@
                             <p class="footer-contact-text">@root.Value("footerContactContent")</p>
                             <div class="footer-contact-info">
                                 <p class="footer-contact-phone"><span class="flaticon-call"></span>
-                                    @root.Value("footerPhoneNumber")</p>
-                                <p class="footer-contact-mail">@root.Value("footerMailAddress")</p>
+                                    <a href="tel:@root.Value("footerPhoneNumber")">@root.Value("footerPhoneNumber")</a>
+                                </p>
+                                <p class="footer-contact-mail"><a href="mailto:@root.Value("footerMailAddress")">@root.Value("footerMailAddress")</a></p>
                             </div>
                             <div class="footer-about-social-list">
                                 @{
