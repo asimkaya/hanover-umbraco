@@ -10,6 +10,7 @@
     // var cafeBottomImage = Model.Value<MediaWithCrops>("cafeBottomImage");
     var cafeMenu = Model.Value<IEnumerable<BlockListItem>>("cafeMenu");
     var cafeBottomImage = Model.Value<BlockGridModel>("cafeBottomImage");
+    var bookNowLink = Model.Value<Link>("cafeBookNowLink");
     int counterMenuCategory = 1;
     int counterMenuItems = 1;
 }
@@ -33,9 +34,15 @@
             <div class="text-center item bg-img" data-overlay-dark="3" data-background="@itemImage.MediaUrl()"></div>
         }
     </div>
-    <!-- arrow down -->
+    <!-@* - arrow down -->
     <div class="arrow bounce text-center">
         <a href="#" data-scroll-nav="1" class=""> <i class="ti-arrow-down"></i> </a>
+    </div> *@
+    <div class="arrow">
+        <div class="butn-light mt-30 mb-30">
+            <a href="@bookNowLink.Url"
+               target="@bookNowLink.Target"><span>Book Now</span></a>
+        </div>
     </div>
 </header>
 
@@ -51,8 +58,11 @@
         }
     </div>
     <!-- arrow down -->
-    <div class="arrow bounce text-center" style="bottom: 26.5rem;">
-        <a href="#" data-scroll-nav="1" class=""> <i class="ti-arrow-down"></i> </a>
+    <div class="arrow" style="bottom: 26.5rem;">
+        <div class="butn-light">
+            <a href="@bookNowLink.Url"
+               target="@bookNowLink.Target"><span>Book Now</span></a>
+        </div>
     </div>
 </header>
 
