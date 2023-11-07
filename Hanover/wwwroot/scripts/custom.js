@@ -53,10 +53,10 @@ $(function () {
             logo = $(".navbar .logo> img");
         if (bodyScroll > 100) {
             navbar.addClass("nav-scroll");
-            logo.attr('src', 'media/hshcferf/hanover-71-suites-logo.png');
+            logo.attr('src', 'https://hanover71suites.com/media/hshcferf/hanover-71-suites-logo.png');
         } else {
             navbar.removeClass("nav-scroll");
-            logo.attr('src', 'media/4e1ikqle/white-logo.png');
+            logo.attr('src', 'https://hanover71suites.com/media/4e1ikqle/white-logo.png');
         }
     });
 
@@ -385,8 +385,6 @@ $(function () {
     $(".restaurant-menu .tabs-icon").on("click", ".owl-item", function () {
         $(this).addClass("actived").siblings().removeClass("actived");
     });
-
-
 
     // Accordion Box (for Faqs)
     if ($(".accordion-box").length) {
