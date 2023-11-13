@@ -669,3 +669,11 @@ $('.slider-grid-bg .owl-carousel').owlCarousel({
         }
     }
 });
+
+$('.contact__form').submit(function () {
+
+    if (!$(".contact__form").valid())
+        return false;
+
+    return grecaptcha.getResponse() != "";
+});

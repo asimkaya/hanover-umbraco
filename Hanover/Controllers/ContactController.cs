@@ -1,7 +1,8 @@
 ﻿using Hanover.Data;
 using Hanover.Models;
-using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Net;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
 using Umbraco.Cms.Core.Routing;
@@ -26,10 +27,18 @@ namespace Hanover.Controllers
         [HttpPost]
         public IActionResult Submit(ContactModel model)
         {
+            var reCaptchaResult = Verify(Request.Form["g-Recaptcha-Response"]);
             if(!ModelState.IsValid)
             {
+                TempData["ContactSuccess"] = false;
                 return CurrentUmbracoPage();
             }
+            if (!reCaptchaResult.Success)
+            {
+                TempData["ContactSuccess"] = false;
+                return CurrentUmbracoPage();
+            }
+
             Guid guid = Guid.NewGuid();
             model.Id = guid;
             model.CreateDate = DateTime.Now;
@@ -40,6 +49,14 @@ namespace Hanover.Controllers
 
 
             return RedirectToCurrentUmbracoPage();
+        }
+
+        public ReCaptchaResult Verify(string reCaptchaResponse)
+        {
+            using var client = new WebClient();
+            var response = client.DownloadString($"https://www.google.com/recaptcha/api/siteverify?secret={_configuration["ReCaptcha:SecretKey"]}&response={reCaptchaResponse}");
+
+            return JsonConvert.DeserializeObject<ReCaptchaResult>(response);
         }
     }
 }

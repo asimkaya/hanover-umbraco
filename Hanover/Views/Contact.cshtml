@@ -1,5 +1,7 @@
 ﻿@using Umbraco.Cms.Core.Models;
 @using Umbraco.Cms.Web.Common.PublishedModels;
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration _configuration
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 @{
     Layout = "Master.cshtml";
@@ -8,10 +10,9 @@
     var formSuccess = Context.Request.Query["status"] == "success";
 }
 
-
 <!-- Header Banner -->
 <div class="banner-header banner-desktop-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
-    data-background="@pageHeaderImage.MediaUrl()">
+     data-background="@pageHeaderImage.MediaUrl()">
     <div class="container">
         <div class="row">
             <div class="col-md-12 caption header-top-text">
@@ -22,7 +23,7 @@
     </div>
 </div>
 <div class="banner-header banner-mobile-header section-padding valign bg-img bg-fixed" data-overlay-dark="4"
-    data-background="@pageMobileImage.MediaUrl()">
+     data-background="@pageMobileImage.MediaUrl()">
     <div class="container">
         <div class="row">
             <div class="col-md-12 caption header-top-text">
@@ -42,15 +43,13 @@
                 <div class="reservations mb-30">
                     <div class="icon"><span class="flaticon-call"></span></div>
                     <div class="text">
-                        <p>@Model.Value("contactPhoneNumberTitle")</p> <a
-                            href="tel:@Model.Value("contactPhoneNumber")">@Model.Value("contactPhoneNumber")</a>
+                        <p>@Model.Value("contactPhoneNumberTitle")</p> <a href="tel:@Model.Value("contactPhoneNumber")">@Model.Value("contactPhoneNumber")</a>
                     </div>
                 </div>
                 <div class="reservations mb-30">
                     <div class="icon"><span class="flaticon-envelope"></span></div>
                     <div class="text">
-                        <p>@Model.Value("contactEmailTitle")</p> <a
-                            href="mailto:@Model.Value("contactEmail")">@Model.Value("contactEmail")</a>
+                        <p>@Model.Value("contactEmailTitle")</p> <a href="mailto:@Model.Value("contactEmail")">@Model.Value("contactEmail")</a>
                     </div>
                 </div>
                 <div class="reservations">
@@ -69,7 +68,8 @@
                         <div class="col-12">
                             @if (TempData["ContactSuccess"] != null && (bool)TempData["ContactSuccess"])
                             {
-                                <div class="alert alert-success contact__msg" role="alert"> Your message was sent successfully.
+                                <div class="alert alert-success contact__msg" role="alert">
+                                    Your message was sent successfully.
                                 </div>
                             }
                         </div>
@@ -87,9 +87,12 @@
                         </div>
                         <div class="col-md-12 form-group">
                             <textarea name="message" id="message" cols="30" rows="4" placeholder="Message *"
-                                required></textarea>
+                                      required></textarea>
                         </div>
                         <div class="col-md-12">
+                            <div class="g-recaptcha" data-sitekey="@_configuration["ReCaptcha:SiteKey"]"></div>
+                        </div>
+                        <div class="col-md-12 mt-2">
                             <button type="submit" class="butn-dark2"><span>Send Message</span></button>
                         </div>
                     </div>
@@ -101,7 +104,7 @@
         <div class="row">
             <div class="col-md-12 map animate-box" data-animate-effect="fadeInUp" style="filter: grayscale(0); ">
                 <iframe src="@Model.Value("contactEmbedLink")" width="100%" height="600" style="border:0;"
-                    allowfullscreen="" loading="lazy"></iframe>
+                        allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </div>
