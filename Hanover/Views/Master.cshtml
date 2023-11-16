@@ -13,6 +13,23 @@
 <html lang="en">
 
 <head>
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WNVNZMZR');</script>
+<!-- End Google Tag Manager -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11408356881"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-11408356881');
+</script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -22,7 +39,7 @@
     <meta name="keywords" content="@Model.Value("metaTags")">
     <link rel="shortcut icon" href="@favicon?.MediaUrl()" />
     <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
+          href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Gilda+Display&display=swap">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="~/css/plugin.css" />
     <link rel="stylesheet" href="~/css/style.css" asp-append-version="true" />
@@ -32,6 +49,11 @@
 </head>
 
 <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WNVNZMZR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
     <render-script position="BodyTop"></render-script>
     <!--Whatsapp Button-->
     <a href="https://wa.me/447867152260" class="wp-button" target="_blank">
@@ -55,25 +77,35 @@
         <div class="container">
             <!-- Logo -->
             <div class="logo-wrapper">
-                <a class="logo" href="@Model.Root().Url()"> <img src="@logo?.MediaUrl()" class="logo-img"
-                        alt="Hanover Hotel Logo"> </a>
+                <a class="logo" href="@Model.Root().Url()">
+                    <img src="@logo?.MediaUrl()" class="logo-img"
+                         alt="Hanover Hotel Logo">
+                </a>
             </div>
             <!-- Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
-                aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"> <span
-                    class="navbar-toggler-icon"><i class="ti-menu"></i></span> </button>
+                    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="ti-menu"></i></span>
+            </button>
             <!-- Menu -->
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link"
-                            href="@Model.Root().Url()">@Umbraco.GetDictionaryValue("Home")</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="@Model.Root().Url()">@Umbraco.GetDictionaryValue("Home")</a>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="/about">@Umbraco.GetDictionaryValue("About")</a></li>
                     <li class="nav-item"><a class="nav-link" href="/rooms">@Umbraco.GetDictionaryValue("Rooms")</a></li>
-                    <li class="nav-item"><a class="nav-link"
-                            href="/visitor-information">@Umbraco.GetDictionaryValue("VisitorInformation")</a></li>
-                    <li class="nav-item"><a class="nav-link"
-                            href="/cafe-bistro">@Umbraco.GetDictionaryValue("CafeBistro")</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/contact">@Umbraco.GetDictionaryValue("Contact")</a>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/visitor-information">@Umbraco.GetDictionaryValue("VisitorInformation")</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="/cafe-bistro">@Umbraco.GetDictionaryValue("CafeBistro")</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">@Umbraco.GetDictionaryValue("Contact")</a>
                     </li>
                 </ul>
             </div>
@@ -117,7 +149,12 @@
                             <h3 class="footer-title">@root.Value("footerContactHeader")</h3>
                             <p class="footer-contact-text">@root.Value("footerContactContent")</p>
                             <div class="footer-contact-info">
-                                <p class="footer-contact-phone"><span class="flaticon-call"></span>
+                                <p class="footer-contact-phone">
+                                    <i class="fa fa-whatsapp" style="font-size: 28px;"></i>
+                                    <a href="https://wa.me/447867152260" target="_blank">+44 786 715 2260</a>
+                                </p>
+                                <p class="footer-contact-phone">
+                                    <span class="flaticon-call"></span>
                                     <a href="tel:@root.Value("footerPhoneNumber")">@root.Value("footerPhoneNumber")</a>
                                 </p>
                                 <p class="footer-contact-mail"><a href="mailto:@root.Value("footerMailAddress")">@root.Value("footerMailAddress")</a></p>
@@ -129,8 +166,9 @@
                                         foreach (var item in socialLinks)
                                         {
                                             var socialLink = item.Content.Value<Link>("socialLink1");
-                                            <a href="@socialLink?.Url" target="@socialLink?.Target"><i
-                                                    class="@item.Content.Value("socialIcon")"></i></a>
+                                                                                            <a href="@socialLink?.Url" target="@socialLink?.Target">
+                                                                                                <i class="@item.Content.Value("socialIcon")"></i>
+                                                                                            </a>
                                         }
                                     }
                                 }
@@ -146,8 +184,10 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="footer-bottom-inner">
-                            <p class="footer-bottom-copy-right">© Copyright 2023 by <a href="https://bilen.uk/"
-                                    target="_blank">Bilen</a></p>
+                            <p class="footer-bottom-copy-right">
+                                © Copyright 2023 by <a href="https://bilen.uk/"
+                                                       target="_blank">Bilen</a>
+                            </p>
                         </div>
                     </div>
                 </div>
